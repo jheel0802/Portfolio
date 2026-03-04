@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 import { 
   Github, 
   Linkedin, 
@@ -315,6 +315,7 @@ const App: React.FC = () => {
         </div>
         <p>© {new Date().getFullYear()} {CONTACT.name}. All Rights Reserved.</p>
       </footer>
+      <Analytics />
     </div>
   );
 };
