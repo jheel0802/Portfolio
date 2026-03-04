@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
   return {
-    base: '/Portfolio/',
+    // Use GitHub Pages base path locally/for gh-pages, but plain "/" on Vercel
+    base: process.env.VERCEL ? '/' : '/Portfolio/',
     server: {
       port: 3000,
       host: '0.0.0.0',
