@@ -1,6 +1,4 @@
-
 import React, { useState, useEffect } from 'react';
-import { Analytics } from "@vercel/analytics/next"
 import { 
   Github, 
   Linkedin, 
@@ -18,6 +16,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { CONTACT, SKILLS, EXPERIENCES, PROJECTS, CERTIFICATIONS } from './constants';
+import { Analytics } from "@vercel/analytics/react";
 
 const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('AI/ML');
