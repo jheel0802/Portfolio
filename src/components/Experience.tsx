@@ -1,50 +1,182 @@
-
 import React from 'react';
+import styled from 'styled-components';
 import { ChevronRight, MapPin } from 'lucide-react';
 import { EXPERIENCES } from '../constants';
 
+const SectionWrapper = styled.section`
+  padding: 5rem 1.5rem;
+  background-color: ${({ theme }) => theme.colors.cardBg};
+`;
+
+const Container = styled.div`
+  max-width: 64rem; // max-w-4xl
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  margin-bottom: 3rem;
+`;
+
+const Subtitle = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+`;
+
+const Title = styled.h2`
+  font-size: 2.25rem; // text-4xl
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const Timeline = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+const TimelineItem = styled.div`
+  position: relative;
+  padding-left: 2rem;
+  border-left: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  
+  &:hover > div:first-child {
+    transform: scale(1.25);
+  }
+`;
+
+const TimelineDot = styled.div`
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 50%;
+  left: -6.5px;
+  top: 0.25rem;
+  transition: transform 0.3s;
+`;
+
+const ItemHeader = styled.div`
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+`;
+
+const Role = styled.h3`
+  font-size: 1.5rem; // text-2xl
+  font-weight: 700;
+  color: #111827; // text-gray-900
+`;
+
+const Period = styled.span`
+  color: ${({ theme }) => theme.colors.subtleText};
+  font-size: 0.875rem;
+  font-weight: 500;
+`;
+
+const CompanyInfo = styled.div`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+
+  span.separator {
+    color: #d1d5db; // text-gray-400
+  }
+
+  span.location {
+    color: ${({ theme }) => theme.colors.subtleText};
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+`;
+
+const PointsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const Point = styled.li`
+  color: ${({ theme }) => theme.colors.cardText};
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+`;
+
+const TechList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const TechTag = styled.span`
+  padding: 2px 8px;
+  background-color: #fef3c7; // amber-100
+  color: #92400e; // amber-800
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+`;
+
 const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-20 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col mb-12">
-          <span className="text-indigo-600 font-bold tracking-widest text-xs uppercase mb-2">My Journey</span>
-          <h2 className="text-4xl font-bold text-gray-800">Work Experience</h2>
-        </div>
+    <SectionWrapper id="experience">
+      <Container>
+        <SectionHeader>
+          <Subtitle>My Journey</Subtitle>
+          <Title>Work Experience</Title>
+        </SectionHeader>
 
-        <div className="space-y-12">
+        <Timeline>
           {EXPERIENCES.map((exp, idx) => (
-            <div key={idx} className="relative pl-8 border-l border-gray-200 group">
-              <div className="absolute w-3 h-3 bg-indigo-600 rounded-full -left-[6.5px] top-1 group-hover:scale-125 transition-transform"></div>
-              <div className="mb-2 flex flex-wrap justify-between items-baseline gap-2">
-                <h3 className="text-2xl font-bold text-gray-900">{exp.role}</h3>
-                <span className="text-gray-500 text-sm font-medium">{exp.period}</span>
-              </div>
-              <div className="text-indigo-500 font-semibold mb-4 flex items-center gap-2">
+            <TimelineItem key={idx}>
+              <TimelineDot />
+              <ItemHeader>
+                <Role>{exp.role}</Role>
+                <Period>{exp.period}</Period>
+              </ItemHeader>
+              <CompanyInfo>
                 {exp.company}
-                <span className="text-gray-400">•</span>
-                <span className="text-gray-500 text-xs flex items-center gap-1"><MapPin className="w-3 h-3" /> {exp.location}</span>
-              </div>
-              <ul className="space-y-3 mb-6">
+                <span className="separator">•</span>
+                <span className="location"><MapPin size={12} /> {exp.location}</span>
+              </CompanyInfo>
+              <PointsList>
                 {exp.points.map((p, i) => (
-                  <li key={i} className="text-gray-600 flex gap-3 text-sm leading-relaxed">
-                    <ChevronRight className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                  <Point key={i}>
+                    <ChevronRight size={16} color="#4f46e5" style={{ flexShrink: 0, marginTop: '0.125rem' }} />
                     {p}
-                  </li>
+                  </Point>
                 ))}
-              </ul>
-              <div className="flex flex-wrap gap-2">
+              </PointsList>
+              <TechList>
                 {exp.technologies.map(t => (
-                  <span key={t} className="px-2 py-0.5 bg-amber-100 text-amber-800 rounded text-[10px] font-bold uppercase tracking-wider">
-                    {t}
-                  </span>
+                  <TechTag key={t}>{t}</TechTag>
                 ))}
-              </div>
-            </div>
+              </TechList>
+            </TimelineItem>
           ))}
-        </div>
-      </div>
-    </section>
+        </Timeline>
+      </Container>
+    </SectionWrapper>
   );
 };
 

@@ -1,7 +1,184 @@
-
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Cpu, Globe, Terminal, Monitor, ShieldCheck, ExternalLink } from 'lucide-react';
 import { PROJECTS, CONTACT } from '../constants';
+
+const SectionWrapper = styled.section`
+  padding: 5rem 1.5rem;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const Container = styled.div`
+  max-width: 80rem; // max-w-7xl
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+`;
+
+const Subtitle = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+`;
+
+const Title = styled.h2`
+  font-size: 2.25rem; // text-4xl
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const CategoryTabs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: #e5e7ebcc; // bg-gray-200/80
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+`;
+
+const CategoryButton = styled.button<{ active: boolean }>`
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  background-color: ${({ active, theme }) => active ? theme.colors.primary : 'transparent'};
+  color: ${({ active, theme }) => active ? 'white' : theme.colors.subtleText};
+  box-shadow: ${({ active }) => active ? '0 4px 14px rgba(0,0,0,0.1)' : 'none'};
+
+  &:hover {
+    color: ${({ active, theme }) => active ? 'white' : theme.colors.text};
+    background-color: ${({ active, theme }) => active ? theme.colors.primary : 'rgba(255,255,255,0.8)'};
+  }
+`;
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  min-height: 400px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
+const ProjectCard = styled.div`
+  background-color: ${({ theme }) => theme.colors.cardBg};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary}80;
+    h4 {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+`;
+
+const CardContent = styled.div`
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+`;
+
+const IconWrapper = styled.span`
+  padding: 0.5rem;
+  background-color: #e0e7ff; // indigo-100
+  border-radius: 0.5rem;
+  display: inline-flex;
+`;
+
+const ExternalLinkIcon = styled.a`
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #9ca3af; // gray-400
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #f3f4f6; // gray-100
+    color: #1f2937; // gray-800
+  }
+`;
+
+const ProjectTitle = styled.h4`
+  font-size: 1.125rem; // text-lg
+  font-weight: 700;
+  color: #111827; // gray-900
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+`;
+
+const ProjectDescription = styled.p`
+  color: ${({ theme }) => theme.colors.cardText};
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+`;
+
+const TechList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const TechTag = styled.span`
+  padding: 2px 8px;
+  background-color: #fef3c7; // amber-100
+  color: #92400e; // amber-800
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+`;
+
+const iconMap = {
+  'AI/ML': <Cpu size={16} color="#4f46e5" />,
+  'Full-Stack': <Globe size={16} color="#4f46e5" />,
+  'Systems': <Terminal size={16} color="#4f46e5" />,
+  'Cloud/DevOps': <Monitor size={16} color="#4f46e5" />,
+  'Security': <ShieldCheck size={16} color="#4f46e5" />,
+};
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('AI/ML');
@@ -9,65 +186,55 @@ const Projects: React.FC = () => {
   const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-20 px-6 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+    <SectionWrapper id="projects">
+      <Container>
+        <SectionHeader>
           <div>
-            <span className="text-indigo-600 font-bold tracking-widest text-xs uppercase mb-2">Portfolio</span>
-            <h2 className="text-4xl font-bold text-gray-800">Featured Projects</h2>
+            <Subtitle>Portfolio</Subtitle>
+            <Title>Featured Projects</Title>
           </div>
-          <div className="flex flex-wrap gap-2 bg-gray-200/80 p-1 rounded-lg border border-gray-200">
+          <CategoryTabs>
             {projectCategories.map(cat => (
-              <button 
+              <CategoryButton 
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-md text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-900 hover:bg-white/80'}`}
+                active={activeCategory === cat}
               >
                 {cat}
-              </button>
+              </CategoryButton>
             ))}
-          </div>
-        </div>
+          </CategoryTabs>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[400px]">
+        <ProjectsGrid>
           {filteredProjects.map((project, idx) => (
-            <div key={idx} className="bg-white group flex flex-col h-full rounded-2xl overflow-hidden border border-gray-200/80 hover:border-indigo-400/50 transition-all shadow-lg">
-              <div className="p-6 flex flex-col h-full">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="p-2 bg-indigo-100 rounded-lg">
-                    {project.category === 'AI/ML' && <Cpu className="w-4 h-4 text-indigo-600" />}
-                    {project.category === 'Full-Stack' && <Globe className="w-4 h-4 text-indigo-600" />}
-                    {project.category === 'Systems' && <Terminal className="w-4 h-4 text-indigo-600" />}
-                    {project.category === 'Cloud/DevOps' && <Monitor className="w-4 h-4 text-indigo-600" />}
-                    {project.category === 'Security' && <ShieldCheck className="w-4 h-4 text-indigo-600" />}
-                  </span>
-                  <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-gray-800 transition-colors">
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors">
+            <ProjectCard key={idx}>
+              <CardContent>
+                <CardHeader>
+                  <IconWrapper>
+                    {iconMap[project.category as keyof typeof iconMap]}
+                  </IconWrapper>
+                  <ExternalLinkIcon href={CONTACT.github} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} />
+                  </ExternalLinkIcon>
+                </CardHeader>
+                <ProjectTitle>
                   {project.title}
-                </h4>
-                <div className="space-y-2 mb-6 flex-grow">
-                  {project.description.map((desc, i) => (
-                    <p key={i} className="text-gray-600 text-[11px] leading-relaxed">
-                      {desc}
-                    </p>
+                </ProjectTitle>
+                <ProjectDescription>
+                  {project.description}
+                </ProjectDescription>
+                <TechList>
+                  {project.technologies.map(t => (
+                    <TechTag key={t}>{t}</TechTag>
                   ))}
-                </div>
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-gray-200/80">
-                  {project.tech.map(t => (
-                    <span key={t} className="text-[9px] text-gray-500 bg-gray-100 px-2 py-0.5 rounded border border-gray-200/80">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+                </TechList>
+              </CardContent>
+            </ProjectCard>
           ))}
-        </div>
-      </div>
-    </section>
+        </ProjectsGrid>
+      </Container>
+    </SectionWrapper>
   );
 };
 

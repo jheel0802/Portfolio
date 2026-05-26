@@ -1,42 +1,115 @@
-
 import React from 'react';
+import styled from 'styled-components';
 import { ShieldCheck, ExternalLink } from 'lucide-react';
 import { CERTIFICATIONS } from '../constants';
 
+const SectionWrapper = styled.section`
+  padding: 5rem 1.5rem;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const Container = styled.div`
+  max-width: 48rem; // max-w-3xl
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.25rem; // text-4xl
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const CertList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+`;
+
+const CertItemBase = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background-color: ${({ theme }) => theme.colors.cardBg};
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+`;
+
+const CertLink = styled(CertItemBase).attrs({ as: 'a' })`
+  justify-content: space-between;
+  text-decoration: none;
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary}80;
+    background-color: ${({ theme }) => theme.colors.background};
+    
+    svg {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+`;
+
+const CertInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const CertDot = styled.div<{ linked?: boolean }>`
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: ${({ linked, theme }) => linked ? theme.colors.primary : theme.colors.subtleText};
+`;
+
+const CertName = styled.span`
+  color: ${({ theme }) => theme.colors.cardText};
+  font-weight: 700;
+`;
+
 const Certifications: React.FC = () => {
   return (
-    <section id="certifications" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-3xl mx-auto">
-            <div className="flex items-center gap-4 mb-12">
-              <ShieldCheck className="text-indigo-600 w-8 h-8" />
-              <h2 className="text-4xl font-bold text-gray-800">Certifications</h2>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
+    <SectionWrapper id="certifications">
+        <Container>
+            <SectionHeader>
+              <ShieldCheck size={32} color="#4f46e5" />
+              <Title>Certifications</Title>
+            </SectionHeader>
+            <CertList>
               {CERTIFICATIONS.map(cert => (
                 cert.link ? (
-                  <a 
+                  <CertLink 
                     key={cert.name} 
                     href={cert.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-5 rounded-xl bg-white border border-gray-200/80 hover:border-indigo-400/50 hover:bg-gray-50 transition-all group shadow-lg"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-2.5 h-2.5 rounded-full bg-indigo-500"></div>
-                      <span className="text-gray-700 font-bold">{cert.name}</span>
-                    </div>
-                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 transition-colors" />
-                  </a>
+                    <CertInfo>
+                      <CertDot linked />
+                      <CertName>{cert.name}</CertName>
+                    </CertInfo>
+                    <ExternalLink size={20} style={{ color: '#9ca3af', transition: 'color 0.3s' }} />
+                  </CertLink>
                 ) : (
-                  <div key={cert.name} className="flex items-center gap-4 p-5 rounded-xl bg-white border border-gray-200/80">
-                    <div className="w-2.5 h-2.5 rounded-full bg-gray-400"></div>
-                    <span className="text-gray-700 font-bold">{cert.name}</span>
-                  </div>
+                  <CertItemBase key={cert.name}>
+                    <CertInfo>
+                      <CertDot />
+                      <CertName>{cert.name}</CertName>
+                    </CertInfo>
+                  </CertItemBase>
                 )
               ))}
-            </div>
-        </div>
-    </section>
+            </CertList>
+        </Container>
+    </SectionWrapper>
   );
 };
 

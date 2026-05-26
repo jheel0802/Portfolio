@@ -1,5 +1,5 @@
-
 import React from 'react';
+import styled from 'styled-components';
 import { Award, GraduationCap } from 'lucide-react';
 
 const masterCourses = [
@@ -14,70 +14,190 @@ const bachelorCourses = [
   "Computer Networks", "Software Engineering"
 ];
 
+const SectionWrapper = styled.section`
+  padding: 5rem 1.5rem;
+`;
+
+const Container = styled.div`
+  max-width: 72rem; // max-w-6xl
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.25rem; // text-4xl
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const EducationList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+const EducationCard = styled.div`
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: ${({ theme }) => theme.colors.cardBg};
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const DegreeInfo = styled.div``;
+
+const DegreeTitle = styled.h3`
+  font-size: 1.5rem; // text-2xl
+  font-weight: 700;
+  color: #111827; // text-gray-900
+  margin: 0;
+`;
+
+const HonorsTitle = styled.p`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.subtleText};
+  font-weight: 500;
+  margin: 0;
+`;
+
+const University = styled.p`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
+  font-size: 1.125rem; // text-lg
+  margin-top: 0.25rem;
+`;
+
+const MetaInfo = styled.div`
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.colors.subtleText};
+  margin-top: 0.5rem;
+
+  @media (min-width: 640px) {
+    margin-top: 0;
+    text-align: right;
+  }
+`;
+
+const GraduationDate = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+
+  @media (min-width: 640px) {
+    justify-content: flex-end;
+  }
+`;
+
+const Gpa = styled.span`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.cardText};
+  display: block;
+`;
+
+const CourseworkSection = styled.div`
+  margin-top: 1.5rem;
+`;
+
+const CourseworkTitle = styled.h4`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.cardText};
+  margin-bottom: 0.75rem;
+`;
+
+const CourseList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const CourseTag = styled.span`
+  padding: 0.25rem 0.75rem;
+  background-color: #fef3c7; // amber-100
+  color: #92400e; // amber-800
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+`;
+
 const Education: React.FC = () => {
   return (
-    <section id="education" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <Award className="text-indigo-600 w-8 h-8" />
-          <h2 className="text-4xl font-bold text-gray-800">Education</h2>
-        </div>
-        <div className="space-y-12">
+    <SectionWrapper id="education">
+      <Container>
+        <SectionHeader>
+          <Award size={32} color="#4f46e5" />
+          <Title>Education</Title>
+        </SectionHeader>
+        <EducationList>
           {/* Master's Degree */}
-          <div className="p-8 rounded-2xl bg-white shadow-lg border border-gray-200/80">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">Master of Computer Science</h3>
-                <p className="text-indigo-600 font-semibold text-lg">North Carolina State University</p>
-              </div>
-              <div className="text-sm text-gray-500 mt-2 sm:mt-0 sm:text-right">
-                <span className="flex items-center gap-2 justify-start sm:justify-end">
-                  <GraduationCap className="w-4 h-4" /> May 2026
-                </span>
-                <span className="font-bold text-gray-700">GPA: 3.8 / 4.0</span>
-              </div>
-            </div>
-            <div className="mt-6">
-              <h4 className="font-bold text-gray-700 mb-3">Relevant Coursework:</h4>
-              <div className="flex flex-wrap gap-2">
+          <EducationCard>
+            <CardHeader>
+              <DegreeInfo>
+                <DegreeTitle>Master of Computer Science</DegreeTitle>
+                <University>North Carolina State University</University>
+              </DegreeInfo>
+              <MetaInfo>
+                <GraduationDate>
+                  <GraduationCap size={16} /> May 2026
+                </GraduationDate>
+                <Gpa>GPA: 3.8 / 4.0</Gpa>
+              </MetaInfo>
+            </CardHeader>
+            <CourseworkSection>
+              <CourseworkTitle>Relevant Coursework:</CourseworkTitle>
+              <CourseList>
                 {masterCourses.map(course => (
-                  <span key={course} className="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">
-                    {course}
-                  </span>
+                  <CourseTag key={course}>{course}</CourseTag>
                 ))}
-              </div>
-            </div>
-          </div>
+              </CourseList>
+            </CourseworkSection>
+          </EducationCard>
 
           {/* Bachelor's Degree */}
-          <div className="p-8 rounded-2xl bg-white shadow-lg border border-gray-200/80">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">Bachelor of Technology (B.Tech), Computer Engineering</h3>
-                <p className="text-md text-gray-600 font-medium">Honors in Data Science</p>
-                <p className="text-indigo-600 font-semibold text-lg mt-1">Somaiya Vidyavihar University</p>
-              </div>
-              <div className="text-sm text-gray-500 mt-2 sm:mt-0 sm:text-right">
-                <span className="flex items-center gap-2 justify-start sm:justify-end">
-                  <GraduationCap className="w-4 h-4" /> Graduated: June 2024
-                </span>
-                <span className="font-bold text-gray-700">GPA: 9.0 / 10.0</span>
-              </div>
-            </div>
-            <div className="mt-6">
-              <h4 className="font-bold text-gray-700 mb-3">Relevant Coursework:</h4>
-              <div className="flex flex-wrap gap-2">
+          <EducationCard>
+            <CardHeader>
+              <DegreeInfo>
+                <DegreeTitle>Bachelor of Technology (B.Tech), Computer Engineering</DegreeTitle>
+                <HonorsTitle>Honors in Data Science</HonorsTitle>
+                <University>Somaiya Vidyavihar University</University>
+              </DegreeInfo>
+              <MetaInfo>
+                <GraduationDate>
+                  <GraduationCap size={16} /> May 2024
+                </GraduationDate>
+                <Gpa>GPA: 3.9 / 4.0</Gpa>
+              </MetaInfo>
+            </CardHeader>
+            <CourseworkSection>
+              <CourseworkTitle>Relevant Coursework:</CourseworkTitle>
+              <CourseList>
                 {bachelorCourses.map(course => (
-                  <span key={course} className="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">
-                    {course}
-                  </span>
+                  <CourseTag key={course}>{course}</CourseTag>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              </CourseList>
+            </CourseworkSection>
+          </EducationCard>
+        </EducationList>
+      </Container>
+    </SectionWrapper>
   );
 };
 

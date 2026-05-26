@@ -1,41 +1,124 @@
-
 import React from 'react';
+import styled from 'styled-components';
 import { Code2, Globe, Cpu, Monitor, Database } from 'lucide-react';
 import { SKILLS } from '../constants';
 
+const SectionWrapper = styled.section`
+  padding: 5rem 1.5rem;
+  background-color: ${({ theme }) => theme.colors.cardBg};
+`;
+
+const Container = styled.div`
+  max-width: 72rem; // max-w-6xl
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background-color: ${({ theme }) => theme.colors.cardBorder};
+  flex-grow: 1;
+`;
+
+const Title = styled.h2`
+  color: ${({ theme }) => theme.colors.subtleText};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  text-align: center;
+  font-weight: 700;
+`;
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const SkillCard = styled.div`
+  background-color: #f9fafb; // bg-gray-50/80
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+`;
+
+const CardTitle = styled.h3`
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const SkillList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const SkillTag = styled.span`
+  padding: 0.25rem 0.75rem;
+  background-color: #fef3c7; // amber-100
+  color: #92400e; // amber-800
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+`;
+
+const iconMap = [
+  <Code2 size={20} color="#4f46e5" />,
+  <Globe size={20} color="#4f46e5" />,
+  <Cpu size={20} color="#4f46e5" />,
+  <Monitor size={20} color="#4f46e5" />,
+  <Database size={20} color="#4f46e5" />,
+];
+
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="h-px bg-gray-200 flex-grow"></div>
-          <h2 className="text-gray-600 uppercase tracking-widest text-sm text-center font-bold">Tech Stack</h2>
-          <div className="h-px bg-gray-200 flex-grow"></div>
-        </div>
+    <SectionWrapper id="skills">
+      <Container>
+        <SectionHeader>
+          <Divider />
+          <Title>Tech Stack</Title>
+          <Divider />
+        </SectionHeader>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <SkillsGrid>
           {SKILLS.map((group, idx) => (
-            <div key={idx} className="bg-gray-50/80 p-6 rounded-2xl border border-gray-200/80">
-              <div className="flex items-center gap-3 mb-5">
-                {idx === 0 && <Code2 className="text-indigo-600 w-5 h-5" />}
-                {idx === 1 && <Globe className="text-indigo-600 w-5 h-5" />}
-                {idx === 2 && <Cpu className="text-indigo-600 w-5 h-5" />}
-                {idx === 3 && <Monitor className="text-indigo-600 w-5 h-5" />}
-                {idx === 4 && <Database className="text-indigo-600 w-5 h-5" />}
-                <h3 className="font-bold text-gray-800">{group.category}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
+            <SkillCard key={idx}>
+              <CardHeader>
+                {iconMap[idx]}
+                <CardTitle>{group.category}</CardTitle>
+              </CardHeader>
+              <SkillList>
                 {group.skills.map(skill => (
-                  <span key={skill} className="skill-tag px-3 py-1 bg-amber-100 text-amber-800 rounded-md text-sm font-semibold">
+                  <SkillTag key={skill}>
                     {skill}
-                  </span>
+                  </SkillTag>
                 ))}
-              </div>
-            </div>
+              </SkillList>
+            </SkillCard>
           ))}
-        </div>
-      </div>
-    </section>
+        </SkillsGrid>
+      </Container>
+    </SectionWrapper>
   );
 };
 
