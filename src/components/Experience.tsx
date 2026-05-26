@@ -137,7 +137,7 @@ const TechTag = styled.span`
   letter-spacing: 0.05em;
 `;
 
-const Experience: React.FC = () => {
+const Experience = () => {
   return (
     <SectionWrapper id="experience">
       <Container>

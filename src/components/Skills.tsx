@@ -90,7 +90,7 @@ const iconMap = [
   <Database size={20} color="#4f46e5" />,
 ];
 
-const Skills: React.FC = () => {
+const Skills = () => {
   return (
     <SectionWrapper id="skills">
       <Container>

@@ -185,6 +185,8 @@ const Projects: React.FC = () => {
   const projectCategories = ['AI/ML', 'Full-Stack', 'Systems', 'Cloud/DevOps', 'Security'];
   const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
 
+  console.log('Projects data:', PROJECTS);
+
   return (
     <SectionWrapper id="projects">
       <Container>
@@ -225,7 +227,7 @@ const Projects: React.FC = () => {
                   {project.description}
                 </ProjectDescription>
                 <TechList>
-                  {project.technologies.map(t => (
+                  {project.tech.map(t => (
                     <TechTag key={t}>{t}</TechTag>
                   ))}
                 </TechList>

@@ -183,7 +183,7 @@ const Education: React.FC = () => {
                 <GraduationDate>
                   <GraduationCap size={16} /> May 2024
                 </GraduationDate>
-                <Gpa>GPA: 3.9 / 4.0</Gpa>
+                <Gpa>GPA: 9 / 10</Gpa>
               </MetaInfo>
             </CardHeader>
             <CourseworkSection>

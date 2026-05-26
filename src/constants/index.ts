@@ -1,5 +1,5 @@
 
-import { Experience, Project, SkillGroup, Certification } from './types';
+import type { Experience, Project, SkillGroup, Certification } from '../types';
 
 export const CONTACT = {
   name: "JHEEL GALA",
