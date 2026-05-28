@@ -4,8 +4,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   return {
-    // Use GitHub Pages base path locally/for gh-pages, but plain "/" on Vercel
-    base: '/',
+    // Use a relative base so assets are served correctly from subpaths (GitHub Pages)
+    base: './',
     server: {
       port: 3000,
       host: '0.0.0.0',

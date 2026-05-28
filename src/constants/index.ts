@@ -26,7 +26,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Graduate Assistant",
     company: "North Carolina State University",
     location: "Raleigh, NC",
-    period: "May 2025 – Present",
+    period: "May 2025 – May 2026",
     technologies: ["Python", "XGBoost", "FastDTW", "Machine Learning", "OCR"],
     points: [
       "Built a machine learning forecasting system on 210K+ smartphone sensor data points, achieving 0.776 accuracy for anxiety and depression prediction.",
