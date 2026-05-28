@@ -4,12 +4,17 @@ import { ShieldCheck, ExternalLink } from 'lucide-react';
 import { CERTIFICATIONS } from '../constants';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 5rem 1rem;
   background-color: ${({ theme }) => theme.colors.background};
+
+  @media (min-width: 1024px) {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 48rem; // max-w-3xl
+  max-width: 84rem;
   margin: 0 auto;
 `;
 
@@ -23,18 +28,35 @@ const SectionHeader = styled.div`
 const Title = styled.h2`
   font-size: 2.25rem; // text-4xl
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const CertList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+`;
+
+const CertRow = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    justify-content: stretch;
+    & > * {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
 `;
 
 const CertItemBase = styled.div`
   display: flex;
   align-items: center;
+  width: fit-content;
+  max-width: 100%;
   padding: 1.25rem;
   border-radius: 0.75rem;
   background-color: ${({ theme }) => theme.colors.cardBg};
@@ -73,9 +95,43 @@ const CertDot = styled.div<{ linked?: boolean }>`
 const CertName = styled.span`
   color: ${({ theme }) => theme.colors.cardText};
   font-weight: 700;
+  white-space: nowrap;
 `;
 
 const Certifications: React.FC = () => {
+  const preferredTop = [
+    'Google Cloud Engineering Certificate',
+    'AWS Cloud Technical Essentials',
+  ];
+
+  // Top row should contain only the preferred two certs; all others go to bottom
+  const topRowCertifications = CERTIFICATIONS.filter(c => preferredTop.includes(c.name));
+  const bottomRowCertifications = CERTIFICATIONS.filter(c => !preferredTop.includes(c.name));
+
+  const renderCertification = (cert: { name: string; link?: string }) => (
+    cert.link ? (
+      <CertLink 
+        key={cert.name} 
+        href={cert.link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <CertInfo>
+          <CertDot linked />
+          <CertName>{cert.name}</CertName>
+        </CertInfo>
+        <ExternalLink size={20} style={{ color: '#9ca3af', transition: 'color 0.3s' }} />
+      </CertLink>
+    ) : (
+      <CertItemBase key={cert.name}>
+        <CertInfo>
+          <CertDot />
+          <CertName>{cert.name}</CertName>
+        </CertInfo>
+      </CertItemBase>
+    )
+  );
+
   return (
     <SectionWrapper id="certifications">
         <Container>
@@ -84,29 +140,12 @@ const Certifications: React.FC = () => {
               <Title>Certifications</Title>
             </SectionHeader>
             <CertList>
-              {CERTIFICATIONS.map(cert => (
-                cert.link ? (
-                  <CertLink 
-                    key={cert.name} 
-                    href={cert.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <CertInfo>
-                      <CertDot linked />
-                      <CertName>{cert.name}</CertName>
-                    </CertInfo>
-                    <ExternalLink size={20} style={{ color: '#9ca3af', transition: 'color 0.3s' }} />
-                  </CertLink>
-                ) : (
-                  <CertItemBase key={cert.name}>
-                    <CertInfo>
-                      <CertDot />
-                      <CertName>{cert.name}</CertName>
-                    </CertInfo>
-                  </CertItemBase>
-                )
-              ))}
+              <CertRow>
+                {topRowCertifications.map(renderCertification)}
+              </CertRow>
+              <CertRow>
+                {bottomRowCertifications.map(renderCertification)}
+              </CertRow>
             </CertList>
         </Container>
     </SectionWrapper>

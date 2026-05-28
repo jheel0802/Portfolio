@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { CONTACT } from '../constants';
+import profilePhoto from '../assets/profile-photo.png';
 
 interface HeroProps {
   handleScrollTo: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void;
@@ -9,42 +10,101 @@ interface HeroProps {
 
 const HeroWrapper = styled.section`
   position: relative;
-  padding: 12rem 1.5rem 6rem;
+  padding: 9rem 1.5rem 6rem; // Reduced top and bottom padding
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
-  text-align: center;
+
+  @media (min-width: 1024px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 `;
 
 const BackgroundGlow = styled.div`
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 600px;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
-  filter: blur(120px);
-  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.08), transparent 70%);
+  filter: blur(100px);
   z-index: 0;
 `;
 
 const HeroContainer = styled.div`
-  max-width: 80rem; // max-w-5xl
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+`;
+
+const HeroContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+`;
+
+const TextContent = styled.div`
+  flex: 1;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    order: 2;
+  }
+`;
+
+const ImageContainer = styled.div`
+  flex-shrink: 0;
+  @media (max-width: 768px) {
+    order: 1;
+  }
+`;
+
+const ProfileImage = styled.img`
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid ${({ theme }) => theme.colors.cardBg};
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 180px;
+  }
+
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const Headline = styled.h1`
-  font-size: 5rem; // text-8xl
-  font-weight: 900;
-  letter-spacing: -0.05em;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1.15;
 
   @media (max-width: 768px) {
-    font-size: 3.75rem; // text-6xl
+    font-size: 2.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   span {
@@ -63,28 +123,31 @@ const Headline = styled.h1`
 `;
 
 const Subheadline = styled.p`
-  font-size: 1.5rem; // text-2xl
+  font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.subtleText};
-  max-width: 56rem; // max-w-3xl
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-  text-wrap: balance;
+  margin: 0 0 2.5rem; // Removed auto margin for left alignment
+  line-height: 1.7;
+  max-width: 100%; // Allow it to fill the container
+  text-align: justify;
 
   @media (max-width: 768px) {
-    font-size: 1.125rem; // text-lg
-  }
-
-  span {
-    color: ${({ theme }) => theme.colors.text};
-    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 auto 2.5rem;
   }
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
+  justify-content: center; // Center buttons
+  margin-top: 2rem; // Add space above buttons
+
+  @media (max-width: 480px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const Button = styled.a<{ primary?: boolean }>`
@@ -97,34 +160,38 @@ const Button = styled.a<{ primary?: boolean }>`
   text-decoration: none;
   transition: all 0.3s;
   cursor: pointer;
-
   background-color: ${({ primary, theme }) => primary ? theme.colors.primary : `${theme.colors.primary}1a`};
   color: ${({ primary, theme }) => primary ? 'white' : theme.colors.primary};
-  border: ${({ primary, theme }) => primary ? 'none' : `1px solid ${theme.colors.primary}4d`};
-  box-shadow: ${({ primary, theme }) => primary ? `0 4px 14px ${theme.colors.primary}33` : 'none'};
+  border: 1px solid ${({ theme }) => `${theme.colors.primary}4d`};
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+  }
 
   &:hover {
-    background-color: ${({ primary, theme }) => primary ? '#4338ca' : theme.colors.primary};
-    color: white;
+    background-color: ${({ primary, theme }) => primary ? '#4338ca' : `${theme.colors.primary}33`};
+    color: ${({ primary }) => primary ? 'white' : ''};
   }
 `;
-
 
 const Hero: React.FC<HeroProps> = ({ handleScrollTo }) => {
   return (
     <HeroWrapper>
       <BackgroundGlow />
       <HeroContainer>
-        <Headline>
-          I build <span className="gradient-1">systems</span> that scale <br className="hidden md:block" />
-          & <span className="gradient-2">AI</span> that thinks.
-        </Headline>
-        <Subheadline>
-          Software Engineer & Researcher at <span>NC State University</span>. 
-          Focused on bridging the gap between high-performance distributed systems and intelligent behavioral forecasting.
-        </Subheadline>
+        <HeroContent>
+          <ImageContainer>
+            <ProfileImage src={profilePhoto} alt="Jheel Gala" />
+          </ImageContainer>
+          <TextContent>
+            <Headline>
+              I build <span className="gradient-1">systems</span> that scale & <span className="gradient-2">intelligence</span> that adapts.
+            </Headline>
+          </TextContent>
+        </HeroContent>
         <ButtonGroup>
-          <Button primary href={`mailto:${CONTACT.email}`}>
+          <Button href={`mailto:${CONTACT.email}`}>
             <Mail size={20} /> Get In Touch
           </Button>
           <Button href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">

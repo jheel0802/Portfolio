@@ -7,49 +7,65 @@ interface HeaderProps {
   handleScrollTo: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void;
 }
 
-const NavWrapper = styled.nav<{ scrolled: boolean }>`
+const NavWrapper = styled.nav<{ $scrolled: boolean }>`
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 50;
   transition: all 0.3s;
-  background-color: ${({ scrolled, theme }) => scrolled ? `${theme.colors.cardBg}cc` : 'transparent'};
-  backdrop-filter: ${({ scrolled }) => scrolled ? 'blur(10px)' : 'none'};
-  border-bottom: ${({ scrolled, theme }) => scrolled ? `1px solid ${theme.colors.cardBorder}` : 'none'};
-  padding: ${({ scrolled }) => scrolled ? '1rem 0' : '1.5rem 0'};
+  background-color: ${({ theme }) => theme.colors.primary}1A; // Light blue background
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 1rem 0;
 `;
 
 const NavContainer = styled.div`
-  max-width: 960px; // max-w-6xl is usually 1152px, but let's try a slightly smaller one for a cleaner look
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 `;
 
 const Logo = styled.a`
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  color: ${({ theme }) => theme.colors.text};
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
-  cursor: pointer;
 
-  span {
-    color: ${({ theme }) => theme.colors.primary};
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 2rem;
-  font-size: 0.875rem;
+  gap: 1.75rem;
+  font-size: 1.125rem; // 18px
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
 `;
 
 const NavLink = styled.a`
-  color: ${({ theme }) => theme.colors.subtleText};
+  color: ${({ theme }) => theme.colors.cardText}; // Darker color
   text-decoration: none;
   transition: color 0.3s;
   cursor: pointer;
@@ -59,27 +75,12 @@ const NavLink = styled.a`
   }
 `;
 
-const ContactButton = styled.a`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: background-color 0.3s;
-  font-size: 0.875rem;
-
-  &:hover {
-    background-color: #4338ca; // A slightly darker indigo
-  }
-`;
-
 const Header: React.FC<HeaderProps> = ({ scrolled, handleScrollTo }) => {
   return (
-    <NavWrapper scrolled={scrolled}>
+    <NavWrapper $scrolled={scrolled}>
       <NavContainer>
         <Logo href="#" onClick={(e) => handleScrollTo(e, 'top')}>
-          JHEEL<span>.GALA</span>
+          <b>JHEEL.GALA</b>
         </Logo>
         
         <NavLinks>
@@ -92,9 +93,6 @@ const Header: React.FC<HeaderProps> = ({ scrolled, handleScrollTo }) => {
               {item}
             </NavLink>
           ))}
-          <ContactButton href={`mailto:${CONTACT.email}`}>
-            Contact
-          </ContactButton>
         </NavLinks>
       </NavContainer>
     </NavWrapper>

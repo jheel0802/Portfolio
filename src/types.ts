@@ -10,9 +10,9 @@ export interface Experience {
 
 export interface Project {
   title: string;
-  description: string[];
+  description: string | string[];
   tech: string[];
-  category: string;
+  category?: string;
 }
 
 export interface SkillGroup {

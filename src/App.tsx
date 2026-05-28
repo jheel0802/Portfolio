@@ -12,14 +12,14 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const theme = {
   colors: {
-    background: '#f9fafb', // bg-gray-50
-    text: '#1f2937',       // text-gray-800
-    primary: '#4f46e5',    // indigo-600
-    secondary: '#f59e0b',  // amber-500
-    cardBg: '#ffffff',      // bg-white
-    cardBorder: '#e5e7ebcc', // border-gray-200/80
-    cardText: '#374151',    // text-gray-700
-    subtleText: '#6b7280', // text-gray-500
+    background: '#f8f9fa', // A slightly off-white
+    text: '#212529',       // A darker gray for better contrast
+    primary: '#4f46e5',    // The existing primary color
+    secondary: '#f59e0b',  // The existing secondary color
+    cardBg: '#ffffff',
+    cardBorder: '#dee2e6', // A slightly darker border
+    cardText: '#495057',    // A darker gray for card text
+    subtleText: '#6c757d', // A darker subtle text color
   },
   fonts: {
     main: "'Inter', sans-serif",
@@ -27,6 +27,16 @@ const theme = {
 };
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 17px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Award, GraduationCap } from 'lucide-react';
 
 const masterCourses = [
-  "Operating Systems Principles", "Automated Learning and Data Analysis", "Computer & Network Security", 
-  "Software Security", "Neural Networks", "Database Management Systems", 
-  "Design and Analysis of Algorithms", "Internet Protocols", "Generative AI for Computer Systems", "Deep Learning Beyond Accuracy"
+  "Operating Systems", "Automated Learning & Data Analysis", "Computer & Network Security", 
+  "Software Security", "Neural Networks", "Database Management", 
+  "Analysis of Algorithms", "Internet Protocols", "Generative AI for Computer Systems", "Deep Learning"
 ];
 
 const bachelorCourses = [
@@ -16,10 +16,15 @@ const bachelorCourses = [
 
 const SectionWrapper = styled.section`
   padding: 5rem 1.5rem;
+
+  @media (min-width: 1024px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 72rem; // max-w-6xl
+  max-width: 84rem;
   margin: 0 auto;
 `;
 
@@ -33,7 +38,11 @@ const SectionHeader = styled.div`
 const Title = styled.h2`
   font-size: 2.25rem; // text-4xl
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 640px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const EducationList = styled.div`
@@ -48,27 +57,70 @@ const EducationCard = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBg};
   box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+
+  @media (max-width: 640px) {
+    padding: 1.25rem;
+  }
 `;
 
 const CardHeader = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   @media (min-width: 640px) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 `;
 
 const DegreeInfo = styled.div``;
+
+const RightMeta = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  @media (min-width: 640px) {
+    align-items: flex-end;
+    text-align: right;
+  }
+`;
+
+const DegreeTopRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+`;
+
+const UniversityRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+`;
 
 const DegreeTitle = styled.h3`
   font-size: 1.5rem; // text-2xl
   font-weight: 700;
   color: #111827; // text-gray-900
   margin: 0;
+
+  @media (max-width: 640px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const HonorsTitle = styled.p`
@@ -83,16 +135,9 @@ const University = styled.p`
   font-weight: 600;
   font-size: 1.125rem; // text-lg
   margin-top: 0.25rem;
-`;
-
-const MetaInfo = styled.div`
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.subtleText};
-  margin-top: 0.5rem;
 
   @media (min-width: 640px) {
     margin-top: 0;
-    text-align: right;
   }
 `;
 
@@ -101,26 +146,36 @@ const GraduationDate = styled.span`
   align-items: center;
   gap: 0.5rem;
   justify-content: flex-start;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.subtleText};
+  font-weight: 600;
 
   @media (min-width: 640px) {
     justify-content: flex-end;
+    font-size: 1.1rem;
   }
 `;
 
 const Gpa = styled.span`
+  font-size: 1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.cardText};
-  display: block;
+  display: inline-block;
+
+  @media (min-width: 640px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CourseworkSection = styled.div`
-  margin-top: 1.5rem;
+  margin-top: -0.2rem;
 `;
 
 const CourseworkTitle = styled.h4`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.cardText};
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
 `;
 
 const CourseList = styled.div`
@@ -130,11 +185,11 @@ const CourseList = styled.div`
 `;
 
 const CourseTag = styled.span`
-  padding: 0.25rem 0.75rem;
+  padding: 0.4rem 0.9rem;
   background-color: #fef3c7; // amber-100
   color: #92400e; // amber-800
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 600;
 `;
 
@@ -151,15 +206,19 @@ const Education: React.FC = () => {
           <EducationCard>
             <CardHeader>
               <DegreeInfo>
-                <DegreeTitle>Master of Computer Science</DegreeTitle>
-                <University>North Carolina State University</University>
+                <DegreeTopRow>
+                  <DegreeTitle>Master of Computer Science</DegreeTitle>
+                </DegreeTopRow>
+                <UniversityRow>
+                  <University>North Carolina State University</University>
+                </UniversityRow>
               </DegreeInfo>
-              <MetaInfo>
+              <RightMeta>
                 <GraduationDate>
-                  <GraduationCap size={16} /> May 2026
+                  <GraduationCap size={16} /> August 2024 - May 2026
                 </GraduationDate>
                 <Gpa>GPA: 3.8 / 4.0</Gpa>
-              </MetaInfo>
+              </RightMeta>
             </CardHeader>
             <CourseworkSection>
               <CourseworkTitle>Relevant Coursework:</CourseworkTitle>
@@ -175,16 +234,20 @@ const Education: React.FC = () => {
           <EducationCard>
             <CardHeader>
               <DegreeInfo>
-                <DegreeTitle>Bachelor of Technology (B.Tech), Computer Engineering</DegreeTitle>
+                <DegreeTopRow>
+                  <DegreeTitle>Bachelor of Technology (B.Tech), Computer Engineering</DegreeTitle>
+                </DegreeTopRow>
                 <HonorsTitle>Honors in Data Science</HonorsTitle>
-                <University>Somaiya Vidyavihar University</University>
+                <UniversityRow>
+                  <University>Somaiya Vidyavihar University</University>
+                </UniversityRow>
               </DegreeInfo>
-              <MetaInfo>
+              <RightMeta>
                 <GraduationDate>
-                  <GraduationCap size={16} /> May 2024
+                  <GraduationCap size={16} /> September 2020 - May 2024
                 </GraduationDate>
                 <Gpa>GPA: 9 / 10</Gpa>
-              </MetaInfo>
+              </RightMeta>
             </CardHeader>
             <CourseworkSection>
               <CourseworkTitle>Relevant Coursework:</CourseworkTitle>

@@ -6,10 +6,15 @@ import { SKILLS } from '../constants';
 const SectionWrapper = styled.section`
   padding: 5rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.cardBg};
+
+  @media (min-width: 1024px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 72rem; // max-w-6xl
+  max-width: 84rem;
   margin: 0 auto;
 `;
 
@@ -27,44 +32,70 @@ const Divider = styled.div`
 `;
 
 const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.subtleText};
+  color: ${({ theme }) => theme.colors.primary};
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  font-size: 1.25rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
 `;
 
 const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 const SkillCard = styled.div`
-  background-color: #f9fafb; // bg-gray-50/80
-  padding: 1.5rem;
-  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.98));
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border-left: 6px solid ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(79,70,229,0.06);
+    border-image: linear-gradient(135deg, #facc15, #8b5cf6) 1;
+    border-color: transparent;
+  }
+`;
+
+const LeftCol = styled.div`
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  @media (max-width: 767px) {
+    flex: 1 1 auto;
+  }
+`;
+
+const RightCol = styled.div`
+  flex: 1 1 auto;
 `;
 
 const CardHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 `;
 
 const CardTitle = styled.h3`
-  font-weight: 700;
+  font-weight: 800;
   color: ${({ theme }) => theme.colors.text};
+  font-size: 1.05rem;
 `;
 
 const SkillList = styled.div`
@@ -74,12 +105,23 @@ const SkillList = styled.div`
 `;
 
 const SkillTag = styled.span`
-  padding: 0.25rem 0.75rem;
-  background-color: #fef3c7; // amber-100
-  color: #92400e; // amber-800
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  background: linear-gradient(90deg, #fff7cc, #fff3e0);
+  color: #78350f;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.7rem;
+  }
 `;
 
 const iconMap = [
@@ -96,24 +138,26 @@ const Skills = () => {
       <Container>
         <SectionHeader>
           <Divider />
-          <Title>Tech Stack</Title>
+          <Title>Skills</Title>
           <Divider />
         </SectionHeader>
-        
+
         <SkillsGrid>
           {SKILLS.map((group, idx) => (
             <SkillCard key={idx}>
-              <CardHeader>
-                {iconMap[idx]}
+              <LeftCol>
+                {iconMap[idx % iconMap.length]}
                 <CardTitle>{group.category}</CardTitle>
-              </CardHeader>
-              <SkillList>
-                {group.skills.map(skill => (
-                  <SkillTag key={skill}>
-                    {skill}
-                  </SkillTag>
-                ))}
-              </SkillList>
+              </LeftCol>
+              <RightCol>
+                <SkillList>
+                  {group.skills.map(skill => (
+                    <SkillTag key={skill}>
+                      {skill}
+                    </SkillTag>
+                  ))}
+                </SkillList>
+              </RightCol>
             </SkillCard>
           ))}
         </SkillsGrid>
