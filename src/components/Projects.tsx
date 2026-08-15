@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Github } from 'lucide-react';
 
+import distributedArchitecture from '../assets/distributed-architecture.png';
+import aiOpsScreenshot from '../assets/output.webp';
+
 const SectionWrapper = styled.section`
   padding: 5rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.background};
@@ -280,7 +283,7 @@ const Projects: React.FC = () => {
               </ArchitectureHeading>
                 <br></br>
               <ArchitectureImage
-                src="/src/assets/distributed-architecture.png"
+                src={distributedArchitecture}
                 alt="Distributed LLM Evaluation Platform architecture"
               />
             </RightPane>
@@ -325,8 +328,8 @@ const Projects: React.FC = () => {
               <br></br>
 
               <ArchitectureImage
-                src="/src/assets/output.webp"
-                alt="AI Ops Copilot architecture"
+                src={aiOpsScreenshot}
+                alt="AI Ops Copilot working interface"
               />
             </RightPane>
           </FeatureGrid>
