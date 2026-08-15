@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import Header from './components/Header';
 import Hero from './components/Hero';
+import FeaturedProjects from './components/FeaturedProjects';
 import Experience from './components/Experience';
-import Projects from './components/Projects';
+import ResearchPublications from './components/ResearchPublications';
+import ExploreAllProjects from './components/ExploreAllProjects';
 import Skills from './components/Skills';
 import Education from './components/Education';
-import Certifications from './components/Certifications';
 import Footer from './components/Footer';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
@@ -78,11 +79,12 @@ const App: React.FC = () => {
       <Header scrolled={scrolled} handleScrollTo={handleScrollTo} />
       <main>
         <Hero handleScrollTo={handleScrollTo} />
+        <FeaturedProjects />
         <Experience />
-        <Projects />
+        <ResearchPublications />
+        <ExploreAllProjects />
         <Skills />
         <Education />
-        <Certifications />
       </main>
       <Footer />
     </ThemeProvider>

@@ -136,14 +136,31 @@ const Point = styled.li`
 
   .pointText {
     flex: 1;
-    text-align: justify;
+    text-align: left;
   }
 `;
 
-const TechLine = styled.div`
-  font-size: 1.08rem;
-  color: ${({ theme }) => theme.colors.cardText};
-  margin-bottom: 0.5rem;
+const PointLabel = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 700;
+`;
+
+const TechList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.75rem 0 1rem;
+`;
+
+const TechTag = styled.span`
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 `;
 
 const Experience = () => {
@@ -166,17 +183,28 @@ const Experience = () => {
                   </HeaderLeft>
                   <Period>{exp.period}</Period>
                 </ItemHeader>
-                <TechLine>
-                  <strong>Tech:</strong> {exp.technologies.join(' · ')}
-                </TechLine>
+                <TechList>
+                  {exp.technologies.map(tech => (
+                    <TechTag key={tech}>{tech}</TechTag>
+                  ))}
+                </TechList>
                 <PointsList>
                   {exp.points.map((p, i) => (
                     <Point key={i}>
-                      <ChevronRight size={16} color="#4f46e5" style={{ flexShrink: 0, marginTop: '0.125rem' }} />
-                      <span className="pointText">{p}</span>
+                      <ChevronRight
+                        size={16}
+                        color="#4f46e5"
+                        style={{ flexShrink: 0, marginTop: '0.3rem' }}
+                      />
+
+                      <span className="pointText">
+                        {p.label && <PointLabel>{p.label}: </PointLabel>}
+                        {p.text}
+                      </span>
                     </Point>
                   ))}
                 </PointsList>
+
               </TimelineContent>
             </TimelineItem>
           ))}

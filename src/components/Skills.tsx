@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Code2, Globe, Cpu, Monitor, Database } from 'lucide-react';
+import { Code2, Cpu, Monitor, Database, ShieldCheck, ExternalLink } from 'lucide-react';
 import { SKILLS } from '../constants';
 
 const SectionWrapper = styled.section`
@@ -19,84 +19,52 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-`;
-
-const Divider = styled.div`
-  height: 1px;
-  background-color: ${({ theme }) => theme.colors.cardBorder};
-  flex-grow: 1;
+  margin-bottom: 2.5rem;
 `;
 
 const Title = styled.h2`
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 1.25rem;
-  text-align: center;
-  font-weight: 800;
+
+  @media (max-width: 640px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const SkillsGrid = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 `;
 
-const SkillCard = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.98));
-  padding: 1rem 1.25rem;
-  border-radius: 0.75rem;
-  border-left: 6px solid ${({ theme }) => theme.colors.primary};
-  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+const SkillRow = styled.div`
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  align-items: start;
+  gap: 1.5rem;
 
-  @media (max-width: 767px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(79,70,229,0.06);
-    border-image: linear-gradient(135deg, #facc15, #8b5cf6) 1;
-    border-color: transparent;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 `;
 
-const LeftCol = styled.div`
-  flex: 0 0 220px;
+const Category = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-
-  @media (max-width: 767px) {
-    flex: 1 1 auto;
-  }
-`;
-
-const RightCol = styled.div`
-  flex: 1 1 auto;
-`;
-
-const CardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  gap: 0.65rem;
+  min-height: 2rem;
 `;
 
 const CardTitle = styled.h3`
+  margin: 0;
   font-weight: 800;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 1.05rem;
+  font-size: 1rem;
 `;
+
 
 const SkillList = styled.div`
   display: flex;
@@ -104,63 +72,123 @@ const SkillList = styled.div`
   gap: 0.5rem;
 `;
 
-const SkillTag = styled.span`
-  padding: 0.4rem 0.9rem;
-  background: linear-gradient(90deg, #fff7cc, #fff3e0);
-  color: #78350f;
+const skillColors: Record<string, { bg: string; text: string }> = {
+  Languages: {
+    bg: '#eef2ff',
+    text: '#4338ca'
+  },
+  'AI & ML': {
+    bg: '#f3e8ff',
+    text: '#7e22ce'
+  },
+  'Backend & Systems': {
+    bg: '#ecfdf5',
+    text: '#047857'
+  },
+  'Cloud & Infrastructure': {
+    bg: '#fff7ed',
+    text: '#c2410c'
+  }
+};
+
+const SkillTag = styled.span<{ $category: string }>`
+  padding: 0.35rem 0.75rem;
+
+  background: ${({ $category }) =>
+    skillColors[$category]?.bg || '#f3f4f6'};
+
+  color: ${({ $category }) =>
+    skillColors[$category]?.text || '#374151'};
+
   border-radius: 999px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
   transition: transform 0.15s ease;
 
   &:hover {
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 480px) {
-    font-size: 0.85rem;
-    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.65rem;
   }
 `;
 
-const iconMap = [
-  <Code2 size={20} color="#4f46e5" />,
-  <Globe size={20} color="#4f46e5" />,
-  <Cpu size={20} color="#4f46e5" />,
-  <Monitor size={20} color="#4f46e5" />,
-  <Database size={20} color="#4f46e5" />,
-];
+const iconMap: Record<string, React.ReactNode> = {
+  Languages: <Code2 size={20} color="#4f46e5" />,
+  "AI & ML": <Cpu size={20} color="#4f46e5" />,
+  "Backend & Systems": <Database size={20} color="#4f46e5" />,
+  "Cloud & Infrastructure": <Monitor size={20} color="#4f46e5" />,
+  Certifications: <ShieldCheck size={20} color="#4f46e5" />
+};
+
+const SkillTagLink = styled.a`
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.65rem;
+  }
+`;
 
 const Skills = () => {
   return (
     <SectionWrapper id="skills">
       <Container>
         <SectionHeader>
-          <Divider />
           <Title>Skills</Title>
-          <Divider />
         </SectionHeader>
 
         <SkillsGrid>
-          {SKILLS.map((group, idx) => (
-            <SkillCard key={idx}>
-              <LeftCol>
-                {iconMap[idx % iconMap.length]}
-                <CardTitle>{group.category}</CardTitle>
-              </LeftCol>
-              <RightCol>
-                <SkillList>
-                  {group.skills.map(skill => (
-                    <SkillTag key={skill}>
-                      {skill}
-                    </SkillTag>
-                  ))}
-                </SkillList>
-              </RightCol>
-            </SkillCard>
-          ))}
-        </SkillsGrid>
+  {SKILLS.map(group => (
+    <SkillRow key={group.category}>
+      <Category>
+        {iconMap[group.category]}
+        <CardTitle>{group.category}</CardTitle>
+      </Category>
+
+      <SkillList>
+        {group.skills.map(skill => {
+          const isObject = typeof skill === 'object';
+          const skillName = isObject ? skill.name : skill;
+          const skillLink = isObject ? skill.link : undefined;
+          
+          return skillLink ? (
+            <SkillTagLink
+              key={skillName}
+              href={skillLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={skillName}
+            >
+              {skillName}
+            </SkillTagLink>
+          ) : (
+            <SkillTag
+              key={skillName}
+              $category={group.category}
+            >
+              {skillName}
+            </SkillTag>
+          );
+        })}
+      </SkillList>
+    </SkillRow>
+  ))}
+</SkillsGrid>
       </Container>
     </SectionWrapper>
   );

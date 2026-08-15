@@ -84,13 +84,18 @@ const Header: React.FC<HeaderProps> = ({ scrolled, handleScrollTo }) => {
         </Logo>
         
         <NavLinks>
-          {['Experience', 'Projects', 'Skills', 'Education'].map(item => (
-            <NavLink 
-              key={item} 
-              href={`#${item.toLowerCase()}`} 
-              onClick={(e) => handleScrollTo(e, item.toLowerCase())}
+          {[
+            { label: 'Featured Projects', id: 'featured-projects' },
+            { label: 'Experience', id: 'experience' },
+            { label: 'Explore All Projects', id: 'all-projects' },
+            { label: 'Education', id: 'education' },
+          ].map(item => (
+            <NavLink
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleScrollTo(e, item.id)}
             >
-              {item}
+              {item.label}
             </NavLink>
           ))}
         </NavLinks>

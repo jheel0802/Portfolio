@@ -10,13 +10,16 @@ interface HeroProps {
 
 const HeroWrapper = styled.section`
   position: relative;
-  padding: 9rem 1.5rem 6rem; // Reduced top and bottom padding
+  min-height: calc(100vh - 6rem);
+  padding: 7rem 1.25rem 6rem;
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
+  display: flex;
+  align-items: center;
 
   @media (min-width: 1024px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 `;
 
@@ -40,6 +43,7 @@ const HeroContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  width: 100%;
 `;
 
 const HeroContent = styled.div`
@@ -96,18 +100,19 @@ const Headline = styled.h1`
   letter-spacing: -0.04em;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 1.5rem;
-  line-height: 1.15;
+  line-height: 1.05;
 
   @media (max-width: 768px) {
-    font-size: 2.75rem;
+    font-size: 2.4rem;
   }
 
   @media (max-width: 480px) {
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: 1.9rem;
+    line-height: 1.1;
   }
 
-  span {
+  .gradient-1,
+  .gradient-2 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -120,6 +125,12 @@ const Headline = styled.h1`
   .gradient-2 {
     background-image: linear-gradient(to right, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.primary});
   }
+`;
+
+const HeadlineLine = styled.span`
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
 `;
 
 const Subheadline = styled.p`
@@ -186,8 +197,16 @@ const Hero: React.FC<HeroProps> = ({ handleScrollTo }) => {
           </ImageContainer>
           <TextContent>
             <Headline>
-              I build <span className="gradient-1">systems</span> that scale & <span className="gradient-2">intelligence</span> that adapts.
+              <HeadlineLine>
+                <span className="gradient-1">AI</span> is the interesting part.
+              </HeadlineLine>
+              <HeadlineLine>
+                Making it reliable is the engineering part.
+              </HeadlineLine>
             </Headline>
+            <Subheadline>
+              I build the evaluation infrastructure, retrieval systems, agents, and backends around it.
+            </Subheadline>
           </TextContent>
         </HeroContent>
         <ButtonGroup>

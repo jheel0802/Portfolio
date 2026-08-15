@@ -1,26 +1,29 @@
 
+export interface ExperiencePoint {
+  label?: string;
+  text: string;
+}
+
 export interface Experience {
   role: string;
   company: string;
   location: string;
   period: string;
   technologies: string[];
-  points: string[];
+  points: ExperiencePoint[];
 }
 
 export interface Project {
   title: string;
   description: string | string[];
   tech: string[];
-  category?: string;
+  categories: string[];
+  github?: string;
+  demo?: string;
 }
 
 export interface SkillGroup {
   category: string;
-  skills: string[];
+  skills: (string | { name: string; link?: string })[];
 }
 
-export interface Certification {
-  name: string;
-  link?: string;
-}
