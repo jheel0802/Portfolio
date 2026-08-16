@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, handleScrollTo }) => {
           {[
             { label: 'Featured Projects', id: 'featured-projects' },
             { label: 'Experience', id: 'experience' },
-            { label: 'Explore All Projects', id: 'all-projects' },
+            { label: 'All Projects', id: 'all-projects' },
             { label: 'Education', id: 'education' },
           ].map(item => (
             <NavLink

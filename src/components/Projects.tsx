@@ -45,10 +45,9 @@ const FeatureShell = styled.div`
 
 const FeatureGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
-  gap: 0;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -84,11 +83,11 @@ const ProjectKicker = styled.p`
 
 const ProjectTitle = styled.h3`
   margin: 0 0 1rem;
-  font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+  font-size: clamp(1.4rem, 2.4vw, 2.3rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
-  white-space: nowrap;
   color: ${({ theme }) => theme.colors.text};
+  overflow-wrap: anywhere;
 `;
 
 const ProjectSummary = styled.p`
@@ -195,7 +194,7 @@ const ArchitectureCaption = styled.p`
 
 const ArchitectureImage = styled.img`
   width: 100%;
-  height: 19rem;
+  aspect-ratio: 16 / 9;
   display: block;
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
@@ -207,9 +206,8 @@ const BottomProjectGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
-  margin-top: 0.25rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     grid-template-columns: 1fr;
   }
 `;

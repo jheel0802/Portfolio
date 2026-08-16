@@ -29,16 +29,16 @@ const theme = {
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size: 17px;
-  }
-
-  @media (max-width: 768px) {
-    html {
-      font-size: 14px;
-    }
+    font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.main};
@@ -50,6 +50,11 @@ const GlobalStyle = createGlobalStyle`
 
   *, *::before, *::after {
     box-sizing: inherit;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
   }
 `;
 
