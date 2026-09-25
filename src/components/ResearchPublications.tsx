@@ -254,6 +254,46 @@ const ResearchPublications: React.FC = () => {
               ))}
             </TechList>
           </Card>
+
+          {/* Substack: Sim Workflow */}
+          <Card>
+            <Venue>Substack · Sep 2025</Venue>
+
+            <CardTitle>
+              My First AI Workflow on Sim: What Worked, What Didn't
+            </CardTitle>
+
+            <CardText>
+              Built a 4-block AI workflow to auto-track subscriptions from
+              Gmail to Notion using Gemini Flash. Covers variable syntax
+              gotchas, the AI assistant's 15-block overengineering, and
+              when visual builders beat writing code.
+            </CardText>
+
+            <Stats>
+              <Stat>
+                <StatValue>4</StatValue>
+                <StatLabel>workflow blocks</StatLabel>
+              </Stat>
+
+              <Stat>
+                <StatValue>10 min</StatValue>
+                <StatLabel>build time</StatLabel>
+              </Stat>
+            </Stats>
+
+            <TechList>
+              {[
+                'Sim Studio',
+                'Gemini Flash',
+                'Gmail API',
+                'Notion API'
+              ].map(tag => (
+                <TechTag key={tag}>{tag}</TechTag>
+              ))}
+            </TechList>
+          </Card>
+          
         </Grid>
       </Container>
     </SectionWrapper>
