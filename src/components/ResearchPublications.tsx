@@ -257,7 +257,18 @@ const ResearchPublications: React.FC = () => {
 
           {/* Substack: Sim Workflow */}
           <Card>
-            <Venue>Substack · Sep 2025</Venue>
+            <CardTop>
+              <Venue>Substack · Sep 2026</Venue>
+
+              <ActionLink
+                href="https://jheelgala.substack.com/p/my-first-ai-workflow-on-sim-what"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink size={14} />
+                View
+              </ActionLink>
+            </CardTop>
 
             <CardTitle>
               My First AI Workflow on Sim: What Worked, What Didn't
