@@ -6,7 +6,8 @@ export const CONTACT = {
   email: "jheel0802@gmail.com",
   github: "https://github.com/jheel0802",
   linkedin: "https://linkedin.com/in/jheel-gala-7496ab1b9",
-  location: "North Carolina, USA"
+  location: "North Carolina, USA",
+  resume: "https://drive.google.com/file/d/1WLUrlNd-Ogs5P0BgVyUYnrugJ6aO0gym/view?usp=sharing"
 };
 
 export const SKILLS: SkillGroup[] = [
@@ -55,19 +56,19 @@ export const EXPERIENCES: Experience[] = [
     points: [
       {
         label: "Behavioral Forecasting",
-        text: "Built a personalized time-series forecasting system using 210K+ smartphone sensor observations from 121 participants, addressing the cold-start problem through behavioral similarity-based transfer learning and contributing to an accepted IEEE/ACM CHASE 2026 publication."
+        text: "Ran the first large-scale ML study forecasting weekly student mental health (PHQ-4) from 210K+ sensor points, accepted at IEEE/ACM CHASE 2026."
       },
       {
         label: "Model Evaluation",
-        text: "Benchmarked Linear Regression, Random Forest, XGBoost, and transformer-based models for personalized forecasting, identifying XGBoost as the top-performing model with 77% predictive accuracy."
+        text: "Reached 77.7% accuracy with generic XGBoost across 7 benchmarked model families, showing population models beat per-user personalization."
       },
       {
         label: "Reinforcement Learning",
-        text: "Developed a physics-informed livestock climate-control simulator and trained PPO/RecurrentPPO policies across cold, hot, seasonal, and sick-animal conditions, achieving 98%+ thermal-safety compliance while balancing comfort and actuator use."
+        text: "Held 98% thermal-safety compliance with PPO and RecurrentPPO policies trained in a physics-informed livestock climate simulator across cold, hot, seasonal, and sick-animal regimes."
       },
       {
         label: "AI Automation",
-        text: "Built AI-powered desktop and OCR automation for seven invoice formats, including extraction, validation, failure recovery, and visual interaction with Excel and Google Sheets, reducing manual processing from 10 hours to 30 minutes."
+        text: "Cut manual invoice work from 10 hours to 30 minutes with an OCR pipeline automating 7 formats, including extraction, validation, and failure recovery."
       }
     ]
   },
@@ -89,19 +90,19 @@ export const EXPERIENCES: Experience[] = [
     points: [
       {
         label: "Enterprise AI",
-        text: "Built an enterprise AI chatbot on Kore.ai supporting 500+ FAQs/intents across six internal teams, reducing support response time from hours to under a minute and saving 10+ team hours per week."
+        text: "Cut support response from hours to under a minute, saving 10+ hrs/week, with a Kore.ai chatbot covering 500+ FAQs/intents across 6 teams."
       },
       {
         label: "Data Engineering",
-        text: "Engineered Snowflake SQL and ETL pipelines integrating automation data from three enterprise tools into eight analytics tables, powering 21 Domo dashboards with 200+ KPI visualizations for monitoring 11 RPA bots."
+        text: "Powered 21 Domo dashboards (200+ KPIs) monitoring 11 RPA bots with Snowflake SQL and ETL pipelines uniting 3 enterprise tools into 8 tables."
       },
       {
         label: "ETL",
-        text: "Designed custom transformations to normalize dynamic, variable-schema API responses into analytics-ready Snowflake tables, enabling structured reporting from previously unsupported automation data."
+        text: "Enabled reporting on previously unsupported automation data by normalizing variable-schema API responses into analytics-ready tables."
       },
       {
         label: "Automation",
-        text: "Automated document processing for 400+ files using UiPath IDP, reducing manual testing and validation effort."
+        text: "Reduced manual testing and validation effort by automating document processing for 400+ files with UiPath IDP."
       }
     ]
   },
@@ -121,11 +122,11 @@ export const EXPERIENCES: Experience[] = [
     points: [
       {
         label: "NLP Research",
-        text: "Analyzed CoreNLP coreference failures across 100+ synthetic and web-scraped sentences, using quantitative error analysis to identify systematic misclassification and missed-reference patterns."
+        text: "Found systematic misclassification and missed-reference patterns in CoreNLP coreference through error analysis of 100+ synthetic and web-scraped sentences."
       },
       {
         label: "Classification",
-        text: "Built NLTK/scikit-learn text classification models with feature engineering, preprocessing, and scaling, achieving 96% training and 80% test accuracy."
+        text: "Reached 96% training and 80% test accuracy with NLTK/scikit-learn text classifiers built on engineered features."
       }
     ]
   },
@@ -145,21 +146,39 @@ export const EXPERIENCES: Experience[] = [
     points: [
       {
         label: "Machine Learning",
-        text: "Developed a Random Forest shipment-rate prediction model with feature selection and preprocessing, reducing training time to 11 minutes and integrating predictions through a REST API."
+        text: "Cut training time to 11 minutes for a Random Forest shipment-rate model, serving predictions through a REST API."
       },
       {
         label: "Model Evaluation",
-        text: "Achieved 96% training and 80% test accuracy, validating model generalization for real-world shipment cost forecasting."
+        text: "Reached 96% training and 80% test accuracy, validating generalization for real-world cost forecasting."
       },
       {
         label: "OCR",
-        text: "Implemented OCR-based invoice text extraction with 92% accuracy, reducing manual data-entry requirements."
+        text: "Reduced manual data-entry errors with OCR invoice text extraction at 92% accuracy."
       }
     ]
   }
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    title: "Verity Ladder: AI Code Verification Router",
+    description:
+      "VS Code extension that verifies every AI code change against tests and editor checks, routing each request to the cheapest capable model and escalating only when checks fail.",
+    tech: ["TypeScript", "VS Code API", "Groq", "Ollama", "OpenAI"],
+    categories: ["AI & ML", "Backend & Systems"],
+    github: "https://github.com/jheel0802/Verity-Ladder"
+  },
+
+  {
+    title: "Grounded Document Evidence Agent",
+    description:
+      "Document-analysis system that extracts facts with full provenance, detects cross-source contradictions, and maintains a human-approved status brief over a durable LangGraph workflow.",
+    tech: ["Python", "FastAPI", "LangGraph", "pgvector", "MCP"],
+    categories: ["AI & ML", "Backend & Systems"],
+    github: "https://github.com/jheel0802/doctask-jheel-gala"
+  },
+
   {
     title: "Distributed LLM Evaluation Platform",
     description:
