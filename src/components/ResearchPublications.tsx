@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BookOpen, ExternalLink } from 'lucide-react';
+import { BookOpen, ExternalLink, PenLine, Github } from 'lucide-react';
 
 const SectionWrapper = styled.section`
   padding: 5rem 1.5rem;
@@ -142,6 +142,12 @@ const ActionRow = styled.div`
   margin-top: 1.25rem;
 `;
 
+const ActionGroup = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+`;
+
 const ActionLink = styled.a`
   display: inline-flex;
   align-items: center;
@@ -158,6 +164,7 @@ const ActionLink = styled.a`
 
 const ResearchPublications: React.FC = () => {
   return (
+    <>
     <SectionWrapper id="research-publications">
       <Container>
         <SectionHeader>
@@ -188,7 +195,7 @@ const ResearchPublications: React.FC = () => {
               </Stat>
 
               <Stat>
-                <StatValue>77%</StatValue>
+                <StatValue>77.7%</StatValue>
                 <StatLabel>predictive accuracy</StatLabel>
               </Stat>
             </Stats>
@@ -255,6 +262,83 @@ const ResearchPublications: React.FC = () => {
             </TechList>
           </Card>
 
+        </Grid>
+      </Container>
+    </SectionWrapper>
+
+    <SectionWrapper id="writing">
+      <Container>
+        <SectionHeader>
+          <PenLine size={28} color="#4f46e5" />
+          <Title>Writing</Title>
+        </SectionHeader>
+
+        <Grid>
+          {/* SuperDocs benchmark */}
+          <Card>
+            <CardTop>
+              <Venue>Substack · Benchmark writeup</Venue>
+
+              <ActionGroup>
+                <ActionLink
+                  href="https://substack.com/home/post/p-212622947"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink size={14} />
+                  Writeup
+                </ActionLink>
+                <ActionLink
+                  href="https://github.com/jheel0802/superdocs-builds/tree/jheel-section-targeting-benchmark/extensions/jheel0802/section-targeting-benchmark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github size={14} />
+                  Code
+                </ActionLink>
+              </ActionGroup>
+            </CardTop>
+
+            <CardTitle>
+              AI Document-Editing Benchmark (SuperDocs)
+            </CardTitle>
+
+            <CardText>
+              Manually adjudicated benchmark of 14 SHA-256-frozen DOCX files and
+              60 cases testing whether an AI document agent edits the correct
+              section under repeated headings and no-target traps. Surfaced a gap
+              between locating information and choosing where to edit.
+            </CardText>
+
+            <Stats>
+              <Stat>
+                <StatValue>93.3%</StatValue>
+                <StatLabel>section accuracy</StatLabel>
+              </Stat>
+
+              <Stat>
+                <StatValue>97.7% / 82.4%</StatValue>
+                <StatLabel>search vs edit accuracy</StatLabel>
+              </Stat>
+
+              <Stat>
+                <StatValue>60</StatValue>
+                <StatLabel>adjudicated cases</StatLabel>
+              </Stat>
+            </Stats>
+
+            <TechList>
+              {[
+                'Python',
+                'FastAPI',
+                'SQLite',
+                'LLM Evaluation'
+              ].map(tag => (
+                <TechTag key={tag}>{tag}</TechTag>
+              ))}
+            </TechList>
+          </Card>
+
           {/* Substack: Sim Workflow */}
           <Card>
             <CardTop>
@@ -308,6 +392,7 @@ const ResearchPublications: React.FC = () => {
         </Grid>
       </Container>
     </SectionWrapper>
+    </>
   );
 };
 

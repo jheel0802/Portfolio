@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, FileText } from 'lucide-react';
 import { CONTACT } from '../constants';
 import profilePhoto from '../assets/profile-photo.png';
 
@@ -10,21 +10,15 @@ interface HeroProps {
 
 const HeroWrapper = styled.section`
   position: relative;
-  min-height: calc(100vh - 6rem);
-  padding: 7rem 1.25rem 6rem;
+  padding: 10rem 2rem 3rem;
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
   display: flex;
   align-items: center;
 
-  @media (min-width: 1024px) {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-  }
-
   @media (max-width: 768px) {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    min-height: auto;
+    padding: 9rem 1.25rem 3rem;
   }
 `;
 
@@ -40,7 +34,7 @@ const BackgroundGlow = styled.div`
 `;
 
 const HeroContainer = styled.div`
-  max-width: 1280px;
+  max-width: 72rem;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -129,15 +123,15 @@ const HeadlineLine = styled.span`
 const Subheadline = styled.p`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.subtleText};
-  margin: 0 0 2.5rem; // Removed auto margin for left alignment
+  margin: 0 0 2rem;
   line-height: 1.7;
-  max-width: 100%; // Allow it to fill the container
-  text-align: justify;
+  max-width: 40rem;
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 1rem;
     text-align: center;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto 2rem;
   }
 `;
 
@@ -145,8 +139,11 @@ const ButtonGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 
   @media (max-width: 480px) {
     flex-direction: row;
@@ -216,40 +213,52 @@ const Hero: React.FC<HeroProps> = ({ handleScrollTo }) => {
             <Subheadline>
               From AI agents and ML pipelines to APIs, backend systems, and production infrastructure.
             </Subheadline>
+            <ButtonGroup>
+              <Button
+                href={`mailto:${CONTACT.email}`}
+                aria-label="Email Jheel Gala"
+                title="Email"
+              >
+                <Mail size={20} />
+                <ButtonLabel>Get In Touch</ButtonLabel>
+              </Button>
+
+              <Button
+                href={CONTACT.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <Linkedin size={20} />
+                <ButtonLabel>LinkedIn</ButtonLabel>
+              </Button>
+
+              <Button
+                href={CONTACT.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume"
+                title="Resume"
+              >
+                <FileText size={20} />
+                <ButtonLabel>Resume</ButtonLabel>
+              </Button>
+
+              <Button
+                href={CONTACT.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <Github size={20} />
+                <ButtonLabel>GitHub</ButtonLabel>
+              </Button>
+            </ButtonGroup>
+
           </TextContent>
         </HeroContent>
-        <ButtonGroup>
-          <Button
-            href={`mailto:${CONTACT.email}`}
-            aria-label="Email Jheel Gala"
-            title="Email"
-          >
-            <Mail size={20} />
-            <ButtonLabel>Get In Touch</ButtonLabel>
-          </Button>
-
-          <Button
-            href={CONTACT.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            title="LinkedIn"
-          >
-            <Linkedin size={20} />
-            <ButtonLabel>LinkedIn</ButtonLabel>
-          </Button>
-
-          <Button
-            href={CONTACT.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <Github size={20} />
-            <ButtonLabel>GitHub</ButtonLabel>
-          </Button>
-        </ButtonGroup>
       </HeroContainer>
     </HeroWrapper>
   );

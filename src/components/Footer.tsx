@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, FileText } from 'lucide-react';
 import { CONTACT } from '../constants';
 
 const FooterWrapper = styled.footer`
@@ -15,10 +15,14 @@ const FooterWrapper = styled.footer`
 const Tagline = styled.p`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.75rem;
+  margin: 0 1.25rem 1.25rem;
+  font-size: 1rem;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 `;
 
 const SocialLinks = styled.div`
@@ -44,13 +48,18 @@ const Copyright = styled.p`
 const Footer: React.FC = () => {
   return (
     <FooterWrapper>
-      <Tagline>Ready for the next challenge.</Tagline>
+      <Tagline>
+        Open to AI/ML and backend roles · <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+      </Tagline>
       <SocialLinks>
           <SocialLink href={`mailto:${CONTACT.email}`}>
             <Mail size={24} />
           </SocialLink>
           <SocialLink href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">
             <Linkedin size={24} />
+          </SocialLink>
+          <SocialLink href={CONTACT.resume} target="_blank" rel="noopener noreferrer" aria-label="Resume">
+            <FileText size={24} />
           </SocialLink>
           <SocialLink href={CONTACT.github} target="_blank" rel="noopener noreferrer">
             <Github size={24} />

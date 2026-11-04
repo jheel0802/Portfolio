@@ -98,6 +98,9 @@ const Header: React.FC<HeaderProps> = ({ scrolled, handleScrollTo }) => {
               {item.label}
             </NavLink>
           ))}
+          <NavLink href={CONTACT.resume} target="_blank" rel="noopener noreferrer">
+            Resume
+          </NavLink>
         </NavLinks>
       </NavContainer>
     </NavWrapper>

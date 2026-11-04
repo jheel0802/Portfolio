@@ -244,6 +244,82 @@ const Projects: React.FC = () => {
         </SectionHeader>
 
         <FeaturedStack>
+        <BottomProjectGrid>
+          {/* VERITY LADDER */}
+          <BottomProjectCard>
+            <SmallProjectTitle>Verity Ladder: AI Code Verification Router</SmallProjectTitle>
+
+            <ProjectSummary>
+              VS Code extension that verifies every AI code change against the checks that apply and
+              escalates to a paid model only when cheaper ones fail.
+            </ProjectSummary>
+
+            <Highlights>
+              <HighlightItem>
+                <HighlightLabel>Benchmark result:</HighlightLabel>{' '}
+                A test-guided free model matched a frontier model (35/35 tests) at zero paid tokens, 5× faster
+              </HighlightItem>
+              <HighlightItem>
+                <HighlightLabel>Routing ladder:</HighlightLabel>{' '}
+                Starts at the cheapest capable model and escalates only after failed checks and developer approval
+              </HighlightItem>
+              <HighlightItem>
+                <HighlightLabel>Mutation testing:</HighlightLabel>{' '}
+                Injects bugs to reject weak AI-written tests, with automatic rollback of failed changes
+              </HighlightItem>
+            </Highlights>
+
+            <TechList>
+              {['TypeScript', 'VS Code API', 'Groq', 'Ollama', 'OpenAI'].map(tag => (
+                <TechTag key={tag}>{tag}</TechTag>
+              ))}
+            </TechList>
+
+            <ActionRow>
+              <ActionLink href="https://github.com/jheel0802/Verity-Ladder" target="_blank" rel="noopener noreferrer" $primary>
+                <Github size={16} /> GitHub
+              </ActionLink>
+            </ActionRow>
+          </BottomProjectCard>
+
+          {/* EVIDENCE AGENT */}
+          <BottomProjectCard>
+            <SmallProjectTitle>Grounded Document Evidence Agent</SmallProjectTitle>
+
+            <ProjectSummary>
+              Document-analysis system that extracts facts with full provenance, detects cross-source
+              contradictions, and maintains a human-approved status brief.
+            </ProjectSummary>
+
+            <Highlights>
+              <HighlightItem>
+                <HighlightLabel>Grounded by design:</HighlightLabel>{' '}
+                The LLM only extracts; app code owns IDs, provenance, conflict detection, and commits
+              </HighlightItem>
+              <HighlightItem>
+                <HighlightLabel>Durable workflow:</HighlightLabel>{' '}
+                Checkpointed LangGraph runs with restart, resume, and isolated concurrent runs
+              </HighlightItem>
+              <HighlightItem>
+                <HighlightLabel>Tested:</HighlightLabel>{' '}
+                48 tests covering prompt injection and stale-write protection
+              </HighlightItem>
+            </Highlights>
+
+            <TechList>
+              {['Python', 'FastAPI', 'LangGraph', 'pgvector', 'MCP'].map(tag => (
+                <TechTag key={tag}>{tag}</TechTag>
+              ))}
+            </TechList>
+
+            <ActionRow>
+              <ActionLink href="https://github.com/jheel0802/doctask-jheel-gala" target="_blank" rel="noopener noreferrer" $primary>
+                <Github size={16} /> GitHub
+              </ActionLink>
+            </ActionRow>
+          </BottomProjectCard>
+        </BottomProjectGrid>
+
         <FeatureShell>
           <FeatureGrid>
             <LeftPane>

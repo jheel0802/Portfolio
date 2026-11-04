@@ -232,7 +232,7 @@ const Education: React.FC = () => {
 
               <RightMeta>
                 <GraduationDate>
-                  September 2020 – May 2024
+                  September 2020 – June 2024
                 </GraduationDate>
 
                 <Gpa>
