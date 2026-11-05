@@ -6,7 +6,7 @@ import distributedArchitecture from '../assets/distributed-architecture.png';
 import aiOpsScreenshot from '../assets/output.webp';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.background};
 
   @media (min-width: 1024px) {
@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -53,10 +53,10 @@ const FeatureGrid = styled.div`
 `;
 
 const LeftPane = styled.div`
-  padding: 2.25rem;
+  padding: 1.5rem;
 
   @media (min-width: 768px) {
-    padding: 3rem;
+    padding: 2rem;
   }
 `;
 
@@ -75,14 +75,14 @@ const RightPane = styled.div`
 const ProjectKicker = styled.p`
   margin: 0 0 0.8rem;
   color: ${({ theme }) => theme.colors.primary};
-  font-size: 0.85rem;
+  font-size: 0.94rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 `;
 
 const ProjectTitle = styled.h3`
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   font-size: clamp(1.4rem, 2.4vw, 2.3rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -91,20 +91,20 @@ const ProjectTitle = styled.h3`
 `;
 
 const ProjectSummary = styled.p`
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   max-width: 48rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 1.06rem;
+  line-height: 1.55;
 `;
 
 const Highlights = styled.ul`
-  margin: 0 0 1.75rem;
-  padding-left: 1.35rem;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
   display: grid;
-  gap: 0.6rem;
+  gap: 0.4rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1rem;
+  font-size: 1.06rem;
   line-height: 1.55;
 `;
 
@@ -116,14 +116,14 @@ const HighlightLabel = styled.span`
   display: inline;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.06rem;
 `;
 
 const TechList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.5rem;
 `;
 
 const TechTag = styled.span`
@@ -131,7 +131,7 @@ const TechTag = styled.span`
   border-radius: 9999px;
   background: #fef3c7;
   color: #92400e;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -141,7 +141,8 @@ const ActionRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
 `;
 
 const ActionLink = styled.a<{ $primary?: boolean }>`
@@ -181,14 +182,14 @@ const ArchitectureTitle = styled.h4`
 
 const ArchitectureActionLink = styled(ActionLink)`
   padding: 0.55rem 0.8rem;
-  font-size: 0.9rem;
+  font-size: 0.99rem;
   box-shadow: none;
 `;
 
 const ArchitectureCaption = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 0.92rem;
+  font-size: 1.01rem;
   line-height: 1.5;
 `;
 
@@ -213,10 +214,9 @@ const BottomProjectGrid = styled.div`
 `;
 
 const BottomProjectCard = styled.div`
-  padding: 2rem;
+  padding: 1.5rem 1.75rem;
   display: flex;
   flex-direction: column;
-  min-height: 22rem;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: 1.5rem;
   background: linear-gradient(
@@ -228,7 +228,7 @@ const BottomProjectCard = styled.div`
 `;
 
 const SmallProjectTitle = styled.h3`
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.6rem;
   font-size: clamp(1.35rem, 1.8vw, 1.8rem);
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -355,7 +355,6 @@ const Projects: React.FC = () => {
                   <Github size={16} /> GitHub
                 </ArchitectureActionLink>
               </ArchitectureHeading>
-                <br></br>
               <ArchitectureImage
                 src={distributedArchitecture}
                 alt="Distributed LLM Evaluation Platform architecture"
@@ -399,7 +398,6 @@ const Projects: React.FC = () => {
                   <Github size={16} /> GitHub
                 </ArchitectureActionLink>
               </ArchitectureHeading>
-              <br></br>
 
               <ArchitectureImage
                 src={aiOpsScreenshot}

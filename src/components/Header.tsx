@@ -60,7 +60,7 @@ const NavLinks = styled.div`
     width: 100%;
     flex-wrap: wrap;
     gap: 0.75rem 1rem;
-    font-size: 0.95rem;
+    font-size: 1.04rem;
   }
 `;
 

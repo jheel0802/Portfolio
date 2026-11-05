@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Code2, Cpu, Monitor, Database, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Code2, Cpu, Brain, BarChart3, LayoutDashboard, Database, Cloud, Shield, ShieldCheck } from 'lucide-react';
 import { SKILLS } from '../constants';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.cardBg};
 
   @media (min-width: 1024px) {
@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -62,7 +62,7 @@ const CardTitle = styled.h3`
   margin: 0;
   font-weight: 800;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 1rem;
+  font-size: 1.06rem;
 `;
 
 
@@ -73,22 +73,14 @@ const SkillList = styled.div`
 `;
 
 const skillColors: Record<string, { bg: string; text: string }> = {
-  Languages: {
-    bg: '#eef2ff',
-    text: '#4338ca'
-  },
-  'AI & ML': {
-    bg: '#f3e8ff',
-    text: '#7e22ce'
-  },
-  'Backend & Systems': {
-    bg: '#ecfdf5',
-    text: '#047857'
-  },
-  'Cloud & Infrastructure': {
-    bg: '#fff7ed',
-    text: '#c2410c'
-  }
+  Languages: { bg: '#eef2ff', text: '#4338ca' },
+  'AI & LLMs': { bg: '#f3e8ff', text: '#7e22ce' },
+  'Machine Learning': { bg: '#fce7f3', text: '#be185d' },
+  Data: { bg: '#e0f2fe', text: '#0369a1' },
+  Frontend: { bg: '#f0fdfa', text: '#0f766e' },
+  'Backend & Databases': { bg: '#ecfdf5', text: '#047857' },
+  'Cloud & DevOps': { bg: '#fff7ed', text: '#c2410c' },
+  Security: { bg: '#fef2f2', text: '#b91c1c' }
 };
 
 const SkillTag = styled.span<{ $category: string }>`
@@ -101,7 +93,7 @@ const SkillTag = styled.span<{ $category: string }>`
     skillColors[$category]?.text || '#374151'};
 
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.94rem;
   font-weight: 700;
   transition: transform 0.15s ease;
 
@@ -110,16 +102,20 @@ const SkillTag = styled.span<{ $category: string }>`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     padding: 0.3rem 0.65rem;
   }
 `;
 
 const iconMap: Record<string, React.ReactNode> = {
   Languages: <Code2 size={20} color="#4f46e5" />,
-  "AI & ML": <Cpu size={20} color="#4f46e5" />,
-  "Backend & Systems": <Database size={20} color="#4f46e5" />,
-  "Cloud & Infrastructure": <Monitor size={20} color="#4f46e5" />,
+  'AI & LLMs': <Brain size={20} color="#4f46e5" />,
+  'Machine Learning': <Cpu size={20} color="#4f46e5" />,
+  Data: <BarChart3 size={20} color="#4f46e5" />,
+  Frontend: <LayoutDashboard size={20} color="#4f46e5" />,
+  'Backend & Databases': <Database size={20} color="#4f46e5" />,
+  'Cloud & DevOps': <Cloud size={20} color="#4f46e5" />,
+  Security: <Shield size={20} color="#4f46e5" />,
   Certifications: <ShieldCheck size={20} color="#4f46e5" />
 };
 
@@ -129,7 +125,7 @@ const SkillTagLink = styled.a`
   background: #fef3c7;
   color: #92400e;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.94rem;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.15s ease;
@@ -139,7 +135,7 @@ const SkillTagLink = styled.a`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     padding: 0.3rem 0.65rem;
   }
 `;

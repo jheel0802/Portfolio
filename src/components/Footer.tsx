@@ -8,7 +8,7 @@ const FooterWrapper = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.colors.cardBorder};
   text-align: center;
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 0.875rem;
+  font-size: 0.96rem;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
@@ -16,7 +16,7 @@ const Tagline = styled.p`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
   margin: 0 1.25rem 1.25rem;
-  font-size: 1rem;
+  font-size: 1.06rem;
 
   a {
     color: inherit;

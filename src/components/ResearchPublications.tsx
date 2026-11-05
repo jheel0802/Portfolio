@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BookOpen, ExternalLink, PenLine, Github } from 'lucide-react';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.cardBg};
 
   @media (min-width: 1024px) {
@@ -21,7 +21,7 @@ const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -64,7 +64,7 @@ const CardTop = styled.div`
 const Venue = styled.div`
   margin-bottom: 0.6rem;
   color: ${({ theme }) => theme.colors.primary};
-  font-size: 0.75rem;
+  font-size: 0.83rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -81,8 +81,8 @@ const CardTitle = styled.h3`
 const CardText = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 1.04rem;
+  line-height: 1.55;
 `;
 
 const Stats = styled.div`
@@ -104,15 +104,15 @@ const StatValue = styled.div`
 const StatLabel = styled.div`
   margin-top: 0.15rem;
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 0.78rem;
+  font-size: 0.86rem;
 `;
 
 const List = styled.ul`
   margin: 0 0 1.2rem;
   padding-left: 1.15rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 0.92rem;
-  line-height: 1.6;
+  font-size: 1.01rem;
+  line-height: 1.5;
 
   li + li {
     margin-top: 0.3rem;
@@ -131,7 +131,7 @@ const TechTag = styled.span`
   border-radius: 9999px;
   background: #fef3c7;
   color: #92400e;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -157,7 +157,7 @@ const ActionLink = styled.a`
   background: ${({ theme }) => theme.colors.primary};
   color: white;
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 0.83rem;
   font-weight: 700;
   white-space: nowrap;
 `;

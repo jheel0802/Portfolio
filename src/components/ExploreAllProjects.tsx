@@ -4,7 +4,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { PROJECTS } from '../constants';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.background};
 
   @media (min-width: 1024px) {
@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -37,7 +37,7 @@ const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.subtleText};
   margin: 0;
   max-width: 48rem;
-  line-height: 1.7;
+  line-height: 1.55;
 `;
 
 const Filters = styled.div`
@@ -60,7 +60,7 @@ const FilterButton = styled.button<{ $active: boolean }>`
 
   padding: 0.6rem 1rem;
   border-radius: 9999px;
-  font-size: 0.85rem;
+  font-size: 0.94rem;
   font-weight: 700;
   cursor: pointer;
 
@@ -122,7 +122,7 @@ const CategoryList = styled.div`
 
 const CategoryTag = styled.span`
   color: ${({ theme }) => theme.colors.primary};
-  font-size: 0.7rem;
+  font-size: 0.77rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -138,8 +138,8 @@ const CardTitle = styled.h3`
 
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 1.01rem;
+  line-height: 1.55;
   margin: 0 0 1rem;
 `;
 
@@ -155,7 +155,7 @@ const TechTag = styled.span`
   background-color: #fef3c7;
   color: #92400e;
   border-radius: 9999px;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -174,7 +174,7 @@ const ActionLink = styled.a`
   gap: 0.4rem;
 
   color: ${({ theme }) => theme.colors.primary};
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
 
@@ -184,22 +184,19 @@ const ActionLink = styled.a`
 `;
 
 const categories = [
-  'All',
-  'AI & ML',
+  'AI & LLMs',
+  'Machine Learning',
   'Backend & Systems',
   'Cloud & Infrastructure',
   'Security'
 ];
 
 const ExploreAllProjects: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('AI & LLMs');
 
-  const filteredProjects =
-    activeCategory === 'All'
-      ? PROJECTS
-      : PROJECTS.filter(project =>
-          project.categories?.includes(activeCategory)
-        );
+  const filteredProjects = PROJECTS.filter(project =>
+    project.categories?.includes(activeCategory)
+  );
 
   return (
     <SectionWrapper id="all-projects">

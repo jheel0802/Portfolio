@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { EXPERIENCES } from '../constants';
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1rem;
+  padding: 3rem 1rem;
   background-color: ${({ theme }) => theme.colors.cardBg};
 
   @media (min-width: 1024px) {
@@ -19,14 +19,14 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Subtitle = styled.span`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 700;
   letter-spacing: 0.1em;
-  font-size: 0.75rem;
+  font-size: 0.83rem;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   display: block;
@@ -109,7 +109,7 @@ const CompanyName = styled.span`
 
 const Period = styled.span`
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 1.08rem;
+  font-size: 1.12rem;
   font-weight: 400;
   white-space: nowrap;
 
@@ -121,7 +121,7 @@ const Period = styled.span`
 const PointsList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -131,8 +131,8 @@ const Point = styled.li`
   color: ${({ theme }) => theme.colors.cardText};
   display: flex;
   gap: 0.75rem;
-  font-size: 1.06rem;
-  line-height: 1.65;
+  font-size: 1.12rem;
+  line-height: 1.55;
 
   .pointText {
     flex: 1;
@@ -157,7 +157,7 @@ const TechTag = styled.span`
   border-radius: 9999px;
   background: #fef3c7;
   color: #92400e;
-  font-size: 0.75rem;
+  font-size: 0.83rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;

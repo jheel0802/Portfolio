@@ -20,7 +20,7 @@ const bachelorCourses = [
 ];
 
 const SectionWrapper = styled.section`
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
 
   @media (min-width: 1024px) {
     padding-left: 0.5rem;
@@ -37,7 +37,7 @@ const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -99,7 +99,7 @@ const DegreeTitle = styled.h3`
 
 const Honors = styled.span`
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   font-weight: 500;
 `;
 
@@ -107,7 +107,7 @@ const University = styled.p`
   margin: 0.3rem 0 0;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
 `;
 
 const RightMeta = styled.div`
@@ -121,7 +121,7 @@ const RightMeta = styled.div`
 
 const GraduationDate = styled.div`
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   font-weight: 600;
   white-space: nowrap;
 
@@ -133,7 +133,7 @@ const GraduationDate = styled.div`
 const Gpa = styled.div`
   margin-top: 0.25rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   font-weight: 700;
 `;
 
@@ -144,7 +144,7 @@ const CourseworkSection = styled.div`
 const CourseworkTitle = styled.h4`
   margin: 0 0 0.65rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 0.9rem;
+  font-size: 0.99rem;
   font-weight: 700;
 `;
 
@@ -159,7 +159,7 @@ const CourseTag = styled.span`
   background-color: #fef3c7;
   color: #92400e;
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 600;
 `;
 

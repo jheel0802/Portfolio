@@ -10,7 +10,7 @@ interface HeroProps {
 
 const HeroWrapper = styled.section`
   position: relative;
-  padding: 10rem 2rem 3rem;
+  padding: 8rem 2rem 1rem;
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
   display: flex;
@@ -18,7 +18,7 @@ const HeroWrapper = styled.section`
 
   @media (max-width: 768px) {
     min-height: auto;
-    padding: 9rem 1.25rem 3rem;
+    padding: 9rem 1.25rem 1.5rem;
   }
 `;
 
