@@ -70,22 +70,10 @@ export const EXPERIENCES: Experience[] = [
       "OpenClaw"
     ],
     points: [
-      {
-        label: "Behavioral Forecasting",
-        text: "Ran the first large-scale ML study forecasting weekly student mental health (PHQ-4) from 210K+ sensor points, accepted at IEEE/ACM CHASE 2026."
-      },
-      {
-        label: "Model Evaluation",
-        text: "Reached 77.7% accuracy with generic XGBoost across 7 benchmarked model families, showing population models beat per-user personalization."
-      },
-      {
-        label: "Reinforcement Learning",
-        text: "Held 98% thermal-safety compliance with PPO and RecurrentPPO policies trained in a physics-informed livestock climate simulator across cold, hot, seasonal, and sick-animal regimes."
-      },
-      {
-        label: "AI Automation",
-        text: "Cut manual invoice work from 10 hours to 30 minutes with an OCR pipeline automating 7 formats, including extraction, validation, and failure recovery."
-      }
+      { text: "First large-scale ML study forecasting student mental health from 210K+ sensor points, accepted at IEEE/ACM CHASE 2026" },
+      { text: "77.7% accuracy with XGBoost, best of 7 model families" },
+      { text: "98% thermal-safety compliance with PPO policies in a livestock climate simulator" },
+      { text: "Cut invoice processing from 10 hours to 30 minutes with OCR automation" }
     ]
   },
 
@@ -104,22 +92,9 @@ export const EXPERIENCES: Experience[] = [
       "Knowledge Graphs"
     ],
     points: [
-      {
-        label: "Enterprise AI",
-        text: "Cut support response from hours to under a minute, saving 10+ hrs/week, with a Kore.ai chatbot covering 500+ FAQs/intents across 6 teams."
-      },
-      {
-        label: "Data Engineering",
-        text: "Powered 21 Domo dashboards (200+ KPIs) monitoring 11 RPA bots with Snowflake SQL and ETL pipelines uniting 3 enterprise tools into 8 tables."
-      },
-      {
-        label: "ETL",
-        text: "Enabled reporting on previously unsupported automation data by normalizing variable-schema API responses into analytics-ready tables."
-      },
-      {
-        label: "Automation",
-        text: "Reduced manual testing and validation effort by automating document processing for 400+ files with UiPath IDP."
-      }
+      { text: "Cut support response from hours to under a minute with a 500+ intent chatbot, saving 10+ hrs/week" },
+      { text: "Built Snowflake ETL powering 21 Domo dashboards (200+ KPIs) across 11 RPA bots" },
+      { text: "Automated processing of 400+ documents with UiPath IDP" }
     ]
   },
 
@@ -136,14 +111,8 @@ export const EXPERIENCES: Experience[] = [
       "NLP"
     ],
     points: [
-      {
-        label: "NLP Research",
-        text: "Found systematic misclassification and missed-reference patterns in CoreNLP coreference through error analysis of 100+ synthetic and web-scraped sentences."
-      },
-      {
-        label: "Classification",
-        text: "Reached 96% training and 80% test accuracy with NLTK/scikit-learn text classifiers built on engineered features."
-      }
+      { text: "Found systematic coreference failure patterns in CoreNLP across 100+ sentences" },
+      { text: "Built text classifiers reaching 80% test accuracy" }
     ]
   },
 
@@ -160,18 +129,8 @@ export const EXPERIENCES: Experience[] = [
       "OCR"
     ],
     points: [
-      {
-        label: "Machine Learning",
-        text: "Cut training time to 11 minutes for a Random Forest shipment-rate model, serving predictions through a REST API."
-      },
-      {
-        label: "Model Evaluation",
-        text: "Reached 96% training and 80% test accuracy, validating generalization for real-world cost forecasting."
-      },
-      {
-        label: "OCR",
-        text: "Reduced manual data-entry errors with OCR invoice text extraction at 92% accuracy."
-      }
+      { text: "Shipment-rate model at 80% test accuracy, served through a REST API" },
+      { text: "OCR invoice extraction at 92% accuracy" }
     ]
   }
 ];
@@ -180,7 +139,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Verity Ladder: AI Code Verification Router",
     description:
-      "VS Code extension that verifies every AI code change against tests and editor checks, routing each request to the cheapest capable model and escalating only when checks fail.",
+      "Tests every AI code change and escalates to a paid model only when free ones fail.",
     tech: ["TypeScript", "VS Code API", "Groq", "Ollama", "OpenAI"],
     categories: ["AI & LLMs", "Backend & Systems"],
     github: "https://github.com/jheel0802/Verity-Ladder"
@@ -189,7 +148,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Grounded Document Evidence Agent",
     description:
-      "Document-analysis system that extracts facts with full provenance, detects cross-source contradictions, and maintains a human-approved status brief over a durable LangGraph workflow.",
+      "Extracts document facts with provenance and flags cross-source contradictions.",
     tech: ["Python", "FastAPI", "LangGraph", "pgvector", "MCP"],
     categories: ["AI & LLMs", "Backend & Systems"],
     github: "https://github.com/jheel0802/doctask-jheel-gala"
@@ -198,7 +157,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Distributed LLM Evaluation Platform",
     description:
-      "Distributed evaluation infrastructure for reproducible testing of prompts, AI agents, and RAG pipelines, with asynchronous workers, experiment tracking, and automated regression detection.",
+      "Reproducible, distributed evaluation for prompts, agents, and RAG pipelines.",
     tech: ["Python", "FastAPI", "Redis", "PostgreSQL", "Kubernetes"],
     categories: ["AI & LLMs", "Backend & Systems", "Cloud & Infrastructure"],
     github:
@@ -208,7 +167,7 @@ export const PROJECTS: Project[] = [
   {
     title: "AI Ops Copilot",
     description:
-      "AI-powered incident response platform using hybrid retrieval and specialized LangGraph agents to investigate noisy operational incidents and generate evidence-backed root-cause hypotheses.",
+      "LangGraph agents that turn noisy incident data into root-cause hypotheses.",
     tech: [
       "Python",
       "FastAPI",
@@ -227,7 +186,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Generative AI for Design Code Generation",
     description:
-      "Multi-agent LLM system that retrieves prior designs, generates C++ cache-replacement algorithms, and autonomously compiles and evaluates candidates using ChampSim.",
+      "Agents that generate C++ cache policies and test them in ChampSim.",
     tech: [
       "C++",
       "Python",
@@ -244,7 +203,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Real-Time AI Conversation Risk Detection",
     description:
-      "Real-time conversation monitoring system that transforms live audio into transcripts, continuously updated risk scores, and contextual explanations with rolling conversation state and graceful fallbacks.",
+      "Live scam-call detection with transcripts, risk scores, and explanations.",
     tech: [
       "React",
       "FastAPI",
@@ -262,7 +221,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Real-Time Cloud Monitoring & Alerting Platform",
     description:
-      "Cloud observability platform that collects metrics and logs, streams live operational data to a React dashboard, stores historical metrics, and surfaces threshold-based alerts.",
+      "Streams live metrics to a React dashboard with threshold alerts.",
     tech: [
       "AWS CloudWatch",
       "Lambda",
@@ -280,7 +239,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Operating System Memory Management",
     description:
-      "Implemented demand paging in Xinu with page-fault handling, on-demand page tables, per-process virtual heaps, and Second-Chance page replacement.",
+      "Demand paging in Xinu with Second-Chance page replacement.",
     tech: [
       "C",
       "Xinu",
@@ -295,7 +254,7 @@ export const PROJECTS: Project[] = [
   {
     title: "File System Defragmentation",
     description:
-      "Built a C-based defragmentation engine that reconstructed raw Unix-style disk images and recursively relocated direct, single-, double-, and triple-indirect inode blocks.",
+      "C engine that defragments raw Unix disk images across indirect inodes.",
     tech: [
       "C",
       "File Systems",
@@ -310,7 +269,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Process Management Algorithms",
     description:
-      "Implemented two kernel-level CPU schedulers in Xinu, including Linux-inspired epoch scheduling and exponential probabilistic scheduling.",
+      "Two kernel CPU schedulers in Xinu that prevent starvation.",
     tech: [
       "C",
       "Xinu",
@@ -325,7 +284,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Used Car Price Prediction",
     description:
-      "End-to-end regression pipeline for vehicle price prediction with data cleaning, feature engineering, missing-value handling, outlier processing, and an interactive exploration interface.",
+      "Regression pipeline and app that predicts used-car prices.",
     tech: [
       "Python",
       "Pandas",
@@ -338,7 +297,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Women's Safety Data Insights",
     description:
-      "Exploratory analysis and Tableau dashboard examining crime patterns across Indian states, years, and categories using geographic and trend visualizations.",
+      "Tableau dashboard of crime trends across Indian states, 2008 to 2012.",
     tech: [
       "Tableau",
       "Data Visualization",
@@ -350,7 +309,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Tomato Disease Recognition",
     description:
-      "Compared ResNet-50, ResNet-101, and ResNet-152 for tomato leaf disease recognition across 18,345 images, including real-world generalization testing.",
+      "ResNet comparison on 18,345 leaf images, tested on real field photos.",
     tech: [
       "Python",
       "PyTorch",
@@ -364,7 +323,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Satellite Image Segmentation for Deforestation",
     description:
-      "Built a U-Net with a MobileNetV2 encoder to segment deforested regions in Sentinel-2 imagery using transfer learning and curated REDD+ satellite data.",
+      "U-Net that maps deforestation in Sentinel-2 satellite imagery.",
     tech: [
       "Python",
       "TensorFlow",
@@ -380,7 +339,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Fantasy Cricket Team Optimizer",
     description:
-      "ML-based recommendation and constrained optimization system that ranks cricket players and selects complete fantasy teams under budget and role constraints.",
+      "Ranks players with ML and picks teams with knapsack optimization.",
     tech: [
       "Python",
       "Pandas",
@@ -394,7 +353,7 @@ export const PROJECTS: Project[] = [
   {
     title: "TravelLog: Full-Stack Geospatial Platform",
     description:
-      "Full-stack MERN platform for creating and sharing geotagged trips with authenticated CRUD workflows and interactive Mapbox visualizations.",
+      "MERN app for sharing geotagged trips on interactive maps.",
     tech: [
       "React",
       "Redux",
@@ -413,7 +372,7 @@ export const PROJECTS: Project[] = [
   {
     title: "AI-Powered Grammar Learning Platform",
     description:
-      "Full-stack NLP learning platform that analyzes children's writing and provides contextual grammar and coreference feedback using Stanford CoreNLP.",
+      "Gives children real-time grammar feedback using CoreNLP.",
     tech: [
       "React",
       "Node.js",
@@ -428,7 +387,7 @@ export const PROJECTS: Project[] = [
   {
     title: "E-Commerce Microservices Platform",
     description:
-      "E-commerce backend composed of independently deployable customer, product, and order services with CI/CD, centralized logging, and monitoring.",
+      "Independently deployable services with Jenkins CI/CD and monitoring.",
     tech: [
       "Microservices",
       "REST APIs",
@@ -446,7 +405,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Secure Online Banking System",
     description:
-      "Full-stack banking application with authenticated account access, transaction workflows, RBAC, secure sessions, and server-side validation.",
+      "Banking app with RBAC, secure sessions, and audit trails.",
     tech: [
       "PHP",
       "MySQL",
@@ -463,7 +422,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Serverless Image Processing Pipeline",
     description:
-      "Event-driven AWS pipeline that processes S3 image uploads through Lambda, stores metadata in DynamoDB, and monitors execution through CloudWatch.",
+      "Event-driven AWS pipeline that processes S3 image uploads.",
     tech: [
       "AWS Lambda",
       "S3",
@@ -480,7 +439,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Reusable CI/CD Pipeline for ML Model Deployment",
     description:
-      "Reusable deployment pipeline that packages ML models as Flask inference services, containerizes them with Docker, and deploys them to AWS EC2 through Jenkins.",
+      "Jenkins pipeline that ships ML models to EC2 as Docker services.",
     tech: [
       "Jenkins",
       "Docker",
@@ -494,7 +453,7 @@ export const PROJECTS: Project[] = [
   {
     title: "OpenEMR Application Security Assessment",
     description:
-      "End-to-end application security assessment using SAST, DAST, threat modeling, secret scanning, and OWASP ASVS Level 2 mapping.",
+      "Found 12+ vulnerabilities in OpenEMR, mapped to OWASP ASVS.",
     tech: [
       "OWASP ZAP",
       "SonarQube",
@@ -510,7 +469,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Network Exposure & Vulnerability Analysis",
     description:
-      "Python and Censys automation for enumerating internet-facing infrastructure, mapping assets to CIDR and ASN ranges, and analyzing exposed services.",
+      "Python and Censys automation mapping exposed internet services.",
     tech: [
       "Python",
       "Censys",
@@ -528,7 +487,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Android Privacy Leak Detection",
     description:
-      "Static taint analysis across Android applications to trace privacy-sensitive GPS and device-identifier data from sources to network and file sinks.",
+      "Static taint analysis tracing privacy leaks in 25+ Android apps.",
     tech: [
       "Amandroid",
       "Static Taint Analysis",
@@ -543,7 +502,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Linux Application Sandbox Security",
     description:
-      "Evaluated Flatpak sandbox isolation and compared X11 and Wayland security models, including a controlled X11 input-capture proof of concept.",
+      "Tested Flatpak isolation with an X11 input-capture proof of concept.",
     tech: [
       "Linux",
       "Flatpak",
