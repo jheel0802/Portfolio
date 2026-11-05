@@ -121,7 +121,7 @@ const HeadlineLine = styled.span`
 `;
 
 const Subheadline = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: ${({ theme }) => theme.colors.subtleText};
   margin: 0 0 2rem;
   line-height: 1.7;

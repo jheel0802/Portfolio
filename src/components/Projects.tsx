@@ -94,7 +94,7 @@ const ProjectSummary = styled.p`
   margin: 0 0 1rem;
   max-width: 48rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1.06rem;
+  font-size: 1.15rem;
   line-height: 1.55;
 `;
 
@@ -104,7 +104,7 @@ const Highlights = styled.ul`
   display: grid;
   gap: 0.4rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1.06rem;
+  font-size: 1.15rem;
   line-height: 1.55;
 `;
 
@@ -116,7 +116,7 @@ const HighlightLabel = styled.span`
   display: inline;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 800;
-  font-size: 1.06rem;
+  font-size: 1.15rem;
 `;
 
 const TechList = styled.div`
@@ -131,7 +131,7 @@ const TechTag = styled.span`
   border-radius: 9999px;
   background: #fef3c7;
   color: #92400e;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -249,24 +249,11 @@ const Projects: React.FC = () => {
           <BottomProjectCard>
             <SmallProjectTitle>Verity Ladder: AI Code Verification Router</SmallProjectTitle>
 
-            <ProjectSummary>
-              VS Code extension that verifies every AI code change against the checks that apply and
-              escalates to a paid model only when cheaper ones fail.
-            </ProjectSummary>
+            <ProjectSummary>VS Code extension that tests every AI code change and only pays for a frontier model when free ones fail.</ProjectSummary>
 
             <Highlights>
-              <HighlightItem>
-                <HighlightLabel>Benchmark result:</HighlightLabel>{' '}
-                A test-guided free model matched a frontier model (35/35 tests) at zero paid tokens, 5× faster
-              </HighlightItem>
-              <HighlightItem>
-                <HighlightLabel>Routing ladder:</HighlightLabel>{' '}
-                Starts at the cheapest capable model and escalates only after failed checks and developer approval
-              </HighlightItem>
-              <HighlightItem>
-                <HighlightLabel>Mutation testing:</HighlightLabel>{' '}
-                Injects bugs to reject weak AI-written tests, with automatic rollback of failed changes
-              </HighlightItem>
+              <HighlightItem>A free model matched a frontier model on 35/35 tests at zero paid tokens, 5× faster</HighlightItem>
+              <HighlightItem>Mutation testing rejects weak AI-written tests</HighlightItem>
             </Highlights>
 
             <TechList>
@@ -286,24 +273,11 @@ const Projects: React.FC = () => {
           <BottomProjectCard>
             <SmallProjectTitle>Grounded Document Evidence Agent</SmallProjectTitle>
 
-            <ProjectSummary>
-              Document-analysis system that extracts facts with full provenance, detects cross-source
-              contradictions, and maintains a human-approved status brief.
-            </ProjectSummary>
+            <ProjectSummary>Extracts facts from documents with full provenance and flags contradictions across sources.</ProjectSummary>
 
             <Highlights>
-              <HighlightItem>
-                <HighlightLabel>Grounded by design:</HighlightLabel>{' '}
-                The LLM only extracts; app code owns IDs, provenance, conflict detection, and commits
-              </HighlightItem>
-              <HighlightItem>
-                <HighlightLabel>Durable workflow:</HighlightLabel>{' '}
-                Checkpointed LangGraph runs with restart, resume, and isolated concurrent runs
-              </HighlightItem>
-              <HighlightItem>
-                <HighlightLabel>Tested:</HighlightLabel>{' '}
-                48 tests covering prompt injection and stale-write protection
-              </HighlightItem>
+              <HighlightItem>The LLM only extracts; app code owns every commit</HighlightItem>
+              <HighlightItem>48 tests, including prompt injection</HighlightItem>
             </Highlights>
 
             <TechList>
@@ -324,20 +298,11 @@ const Projects: React.FC = () => {
           <FeatureGrid>
             <LeftPane>
               <ProjectTitle>Distributed LLM Evaluation Platform</ProjectTitle>
-              <ProjectSummary>
-                Evaluation infrastructure for reproducible testing of prompts, AI agents, and RAG pipelines.
-              </ProjectSummary>
+              <ProjectSummary>Reproducible evaluation for prompts, agents, and RAG pipelines.</ProjectSummary>
 
               <Highlights>
-                <HighlightItem>
-                  <HighlightLabel>Distributed execution:</HighlightLabel> Redis-backed job queue and asynchronous worker architecture.
-                </HighlightItem>
-                <HighlightItem>
-                  <HighlightLabel>Regression testing:</HighlightLabel> Detects performance changes across models and prompt versions using standard and custom datasets.
-                </HighlightItem>
-                <HighlightItem>
-                  <HighlightLabel>Experiment tracking:</HighlightLabel> Stores prompts, responses, latency, token usage, and evaluation metrics in PostgreSQL.
-                </HighlightItem>
+                <HighlightItem>Async Redis workers with results tracked in PostgreSQL</HighlightItem>
+                <HighlightItem>Catches regressions across models and prompt versions</HighlightItem>
               </Highlights>
 
               <TechList>
@@ -367,20 +332,11 @@ const Projects: React.FC = () => {
           <FeatureGrid>
             <LeftPane>
               <ProjectTitle>AI Ops Copilot</ProjectTitle>
-              <ProjectSummary>
-                AI incident-response system that investigates noisy operational data and produces evidence-backed root-cause hypotheses and remediation steps.
-              </ProjectSummary>
+              <ProjectSummary>Investigates noisy incidents and proposes evidence-backed root causes.</ProjectSummary>
 
               <Highlights>
-                <HighlightItem>
-                  <HighlightLabel>Hybrid retrieval:</HighlightLabel> Searches logs and 1,200+ operational documents using vector, lexical, and metadata retrieval
-                </HighlightItem>
-                <HighlightItem>
-                  <HighlightLabel>Agentic investigation:</HighlightLabel> Specialized LangGraph agents classify incidents, gather evidence, diagnose causes, and propose remediation
-                </HighlightItem>
-                <HighlightItem>
-                  <HighlightLabel>Built-in evaluation:</HighlightLabel> Tests evidence coverage, noisy-log handling, fallback behavior, runtime, and hypothesis quality
-                </HighlightItem>
+                <HighlightItem>Cut simulated triage from 24 to 43 minutes to seconds</HighlightItem>
+                <HighlightItem>Hybrid retrieval over 1,200+ operational documents</HighlightItem>
               </Highlights>
 
               <TechList>
@@ -415,27 +371,11 @@ const Projects: React.FC = () => {
         Generative AI for Design Code Generation
       </SmallProjectTitle>
 
-      <ProjectSummary>
-        Multi-agent system that generates C++ cache-replacement algorithms
-        and evaluates them against real CPU simulation workloads.
-      </ProjectSummary>
+      <ProjectSummary>Agents that write C++ cache policies and test them in a CPU simulator.</ProjectSummary>
 
       <Highlights>
-        <HighlightItem>
-          <HighlightLabel>Performance improvement:</HighlightLabel>{' '}
-          65% → 95% parse/compile success
-        </HighlightItem>
-
-        <HighlightItem>
-          <HighlightLabel>Workload evaluation:</HighlightLabel>{' '}
-          10 CPU workloads evaluated
-        </HighlightItem>
-
-        <HighlightItem>
-          <HighlightLabel>RAG ablations:</HighlightLabel>{' '}
-          Excessive retrieval context degraded generated-policy
-          performance by up to 8.9% IPC
-        </HighlightItem>
+        <HighlightItem>Raised parse/compile success from 65% to 95%</HighlightItem>
+        <HighlightItem>Curated retrieval beat larger context by up to 8.9% IPC</HighlightItem>
       </Highlights>
 
       <TechList>
@@ -463,26 +403,11 @@ const Projects: React.FC = () => {
         Real-Time Conversation Risk Detection
       </SmallProjectTitle>
 
-      <ProjectSummary>
-        Real-time conversation analysis with live transcripts, risk scoring, and contextual explanations.
-      </ProjectSummary>
+      <ProjectSummary>Flags scam calls live with transcripts, risk scores, and explanations.</ProjectSummary>
 
       <Highlights>
-        <HighlightItem>
-          <HighlightLabel>Real-time processing:</HighlightLabel>{' '}
-          Process 4-second audio with 2–3s end-to-end latency
-        </HighlightItem>
-
-        <HighlightItem>
-          <HighlightLabel>Rolling context:</HighlightLabel>{' '}
-          Maintains conversation history for context in risk analysis        
-          </HighlightItem>
-
-        <HighlightItem>
-          <HighlightLabel>Resilient detection:</HighlightLabel>{' '}
-          Combines LLM analysis with deterministic rules during API
-          failures or quota limits
-        </HighlightItem>
+        <HighlightItem>2 to 3 s end-to-end latency on live audio</HighlightItem>
+        <HighlightItem>Falls back to rules when the LLM API fails</HighlightItem>
       </Highlights>
 
       <TechList>

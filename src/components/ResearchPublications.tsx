@@ -81,7 +81,7 @@ const CardTitle = styled.h3`
 const CardText = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1.04rem;
+  font-size: 1.12rem;
   line-height: 1.55;
 `;
 
@@ -183,9 +183,7 @@ const ResearchPublications: React.FC = () => {
             </CardTitle>
 
             <CardText>
-              Personalized mental-health forecasting from 210K+ smartphone
-              sensor observations across 121 participants, focused on
-              cold-start prediction for users with limited historical data.
+              Forecasts weekly student mental health from smartphone sensor data, using behavioral similarity to help new users.
             </CardText>
 
             <Stats>
@@ -233,8 +231,7 @@ const ResearchPublications: React.FC = () => {
             </CardTitle>
 
             <CardText>
-              Comparative study of ResNet architectures for tomato disease
-              recognition, including evaluation on real-world field images.
+              Compares ResNet models for tomato disease recognition on lab and real field images.
             </CardText>
 
             <Stats>
@@ -304,10 +301,7 @@ const ResearchPublications: React.FC = () => {
             </CardTitle>
 
             <CardText>
-              Manually adjudicated benchmark of 14 SHA-256-frozen DOCX files and
-              60 cases testing whether an AI document agent edits the correct
-              section under repeated headings and no-target traps. Surfaced a gap
-              between locating information and choosing where to edit.
+              60-case benchmark testing whether an AI document agent edits the right section. Finding information and choosing where to edit turned out to be different problems.
             </CardText>
 
             <Stats>
@@ -359,10 +353,7 @@ const ResearchPublications: React.FC = () => {
             </CardTitle>
 
             <CardText>
-              Built a 4-block AI workflow to auto-track subscriptions from
-              Gmail to Notion using Gemini Flash. Covers variable syntax
-              gotchas, the AI assistant's 15-block overengineering, and
-              when visual builders beat writing code.
+              A 4-block Gmail-to-Notion subscription tracker, and when visual builders beat writing code.
             </CardText>
 
             <Stats>

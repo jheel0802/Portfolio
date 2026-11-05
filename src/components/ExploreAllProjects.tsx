@@ -130,7 +130,7 @@ const CategoryTag = styled.span`
 
 const CardTitle = styled.h3`
   margin: 0 0 0.65rem;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 1.35;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
@@ -138,7 +138,7 @@ const CardTitle = styled.h3`
 
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1.01rem;
+  font-size: 1.1rem;
   line-height: 1.55;
   margin: 0 0 1rem;
 `;

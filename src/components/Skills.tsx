@@ -93,7 +93,7 @@ const SkillTag = styled.span<{ $category: string }>`
     skillColors[$category]?.text || '#374151'};
 
   border-radius: 999px;
-  font-size: 0.94rem;
+  font-size: 1rem;
   font-weight: 700;
   transition: transform 0.15s ease;
 
@@ -125,7 +125,7 @@ const SkillTagLink = styled.a`
   background: #fef3c7;
   color: #92400e;
   border-radius: 999px;
-  font-size: 0.94rem;
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.15s ease;

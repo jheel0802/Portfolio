@@ -131,7 +131,7 @@ const Point = styled.li`
   color: ${({ theme }) => theme.colors.cardText};
   display: flex;
   gap: 0.75rem;
-  font-size: 1.12rem;
+  font-size: 1.18rem;
   line-height: 1.55;
 
   .pointText {

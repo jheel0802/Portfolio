@@ -99,7 +99,7 @@ const DegreeTitle = styled.h3`
 
 const Honors = styled.span`
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 1.04rem;
+  font-size: 1.1rem;
   font-weight: 500;
 `;
 
@@ -121,7 +121,7 @@ const RightMeta = styled.div`
 
 const GraduationDate = styled.div`
   color: ${({ theme }) => theme.colors.subtleText};
-  font-size: 1.04rem;
+  font-size: 1.1rem;
   font-weight: 600;
   white-space: nowrap;
 
@@ -133,7 +133,7 @@ const GraduationDate = styled.div`
 const Gpa = styled.div`
   margin-top: 0.25rem;
   color: ${({ theme }) => theme.colors.cardText};
-  font-size: 1.04rem;
+  font-size: 1.1rem;
   font-weight: 700;
 `;
 
