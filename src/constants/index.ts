@@ -13,19 +13,35 @@ export const CONTACT = {
 export const SKILLS: SkillGroup[] = [
   {
     category: "Languages",
-    skills: ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
+    skills: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL", "Shell", "Dart", "PHP"]
   },
   {
-    category: "AI & ML",
-    skills: ["PyTorch", "Scikit-learn", "XGBoost", "RAG", "LangGraph", "NLP", "Computer Vision", "Reinforcement Learning"]
+    category: "AI & LLMs",
+    skills: ["LangGraph", "RAG", "Multi-Agent Systems", "LLM Evaluation", "MCP", "pgvector", "Knowledge Graphs", "OpenAI API", "Gemini", "Ollama"]
   },
   {
-    category: "Backend & Systems",
-    skills: ["FastAPI", "Node.js", "Spring Boot", "REST APIs", "WebSockets", "Redis", "PostgreSQL", "Linux"]
+    category: "Machine Learning",
+    skills: ["PyTorch", "TensorFlow", "Scikit-learn", "XGBoost", "Deep Learning", "Computer Vision", "Transfer Learning", "Reinforcement Learning", "Gymnasium", "NLP", "Time Series", "OpenCV"]
   },
   {
-    category: "Cloud & Infrastructure",
-    skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Snowflake", "DynamoDB"]
+    category: "Data",
+    skills: ["Pandas", "NumPy", "Snowflake", "ETL Pipelines", "Matplotlib", "Seaborn", "Tableau", "Domo"]
+  },
+  {
+    category: "Frontend",
+    skills: ["React", "Redux", "HTML", "CSS", "Mapbox", "Flutter"]
+  },
+  {
+    category: "Backend & Databases",
+    skills: ["FastAPI", "Node.js", "Express.js", "Spring Boot", "Flask", "REST APIs", "WebSockets", "Redis", "PostgreSQL", "MySQL", "MongoDB", "Neo4j", "DynamoDB"]
+  },
+  {
+    category: "Cloud & DevOps",
+    skills: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "Linux"]
+  },
+  {
+    category: "Security",
+    skills: ["OWASP ZAP", "Burp Suite", "SonarQube", "SAST/DAST", "Static Taint Analysis", "Censys"]
   },
   {
     category: "Certifications",
@@ -166,7 +182,7 @@ export const PROJECTS: Project[] = [
     description:
       "VS Code extension that verifies every AI code change against tests and editor checks, routing each request to the cheapest capable model and escalating only when checks fail.",
     tech: ["TypeScript", "VS Code API", "Groq", "Ollama", "OpenAI"],
-    categories: ["AI & ML", "Backend & Systems"],
+    categories: ["AI & LLMs", "Backend & Systems"],
     github: "https://github.com/jheel0802/Verity-Ladder"
   },
 
@@ -175,7 +191,7 @@ export const PROJECTS: Project[] = [
     description:
       "Document-analysis system that extracts facts with full provenance, detects cross-source contradictions, and maintains a human-approved status brief over a durable LangGraph workflow.",
     tech: ["Python", "FastAPI", "LangGraph", "pgvector", "MCP"],
-    categories: ["AI & ML", "Backend & Systems"],
+    categories: ["AI & LLMs", "Backend & Systems"],
     github: "https://github.com/jheel0802/doctask-jheel-gala"
   },
 
@@ -184,11 +200,7 @@ export const PROJECTS: Project[] = [
     description:
       "Distributed evaluation infrastructure for reproducible testing of prompts, AI agents, and RAG pipelines, with asynchronous workers, experiment tracking, and automated regression detection.",
     tech: ["Python", "FastAPI", "Redis", "PostgreSQL", "Kubernetes"],
-    categories: [
-      "AI & ML",
-      "Backend & Systems",
-      "Cloud & Infrastructure"
-    ],
+    categories: ["AI & LLMs", "Backend & Systems", "Cloud & Infrastructure"],
     github:
       "https://github.com/jheel0802/Distributed-LLM-Evaluation-Platform"
   },
@@ -207,10 +219,7 @@ export const PROJECTS: Project[] = [
       "LangGraph",
       "Docker"
     ],
-    categories: [
-      "AI & ML",
-      "Backend & Systems"
-    ],
+    categories: ["AI & LLMs", "Backend & Systems"],
     github:
       "https://github.com/jheel0802/ai-ops-copilot"
   },
@@ -227,10 +236,7 @@ export const PROJECTS: Project[] = [
       "AutoAgents",
       "ChampSim"
     ],
-    categories: [
-      "AI & ML",
-      "Backend & Systems"
-    ],
+    categories: ["AI & LLMs", "Backend & Systems"],
     github:
       "https://github.com/jheel0802/Generative-AI-for-Design-Code-Generation"
   },
@@ -246,10 +252,7 @@ export const PROJECTS: Project[] = [
       "Gemini",
       "ElevenLabs"
     ],
-    categories: [
-      "AI & ML",
-      "Backend & Systems"
-    ],
+    categories: ["AI & LLMs", "Backend & Systems"],
     github:
       "https://github.com/jheel0802/scam-detection-app",
     demo:
@@ -329,9 +332,7 @@ export const PROJECTS: Project[] = [
       "Scikit-learn",
       "Machine Learning"
     ],
-    categories: [
-      "AI & ML"
-    ]
+    categories: ["Machine Learning"]
   },
 
   {
@@ -343,9 +344,7 @@ export const PROJECTS: Project[] = [
       "Data Visualization",
       "Exploratory Data Analysis"
     ],
-    categories: [
-      "AI & ML"
-    ]
+    categories: ["Machine Learning"]
   },
 
   {
@@ -359,9 +358,7 @@ export const PROJECTS: Project[] = [
       "ResNet",
       "Transfer Learning"
     ],
-    categories: [
-      "AI & ML"
-    ]
+    categories: ["Machine Learning"]
   },
 
   {
@@ -375,9 +372,7 @@ export const PROJECTS: Project[] = [
       "MobileNetV2",
       "Computer Vision"
     ],
-    categories: [
-      "AI & ML"
-    ],
+    categories: ["Machine Learning"],
     github:
       "https://github.com/opheliasin/forest-image-segmentation"
   },
@@ -393,10 +388,7 @@ export const PROJECTS: Project[] = [
       "Machine Learning",
       "Dynamic Programming"
     ],
-    categories: [
-      "AI & ML",
-      "Backend & Systems"
-    ]
+    categories: ["Machine Learning", "Backend & Systems"]
   },
 
   {
@@ -430,10 +422,7 @@ export const PROJECTS: Project[] = [
       "CoreNLP",
       "NLP"
     ],
-    categories: [
-      "AI & ML",
-      "Backend & Systems"
-    ]
+    categories: ["Machine Learning", "Backend & Systems"]
   },
 
   {
@@ -499,10 +488,7 @@ export const PROJECTS: Project[] = [
       "Python",
       "Flask"
     ],
-    categories: [
-      "AI & ML",
-      "Cloud & Infrastructure"
-    ]
+    categories: ["Machine Learning", "Cloud & Infrastructure"]
   },
 
   {
